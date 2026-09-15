@@ -1,0 +1,10 @@
+
+const ColorView=(()=>{
+ const specs={RGB:[['R',0,255],['G',0,255],['B',0,255]],CMYK:[['C',0,100],['M',0,100],['Y',0,100],['K',0,100]],HLS:[['H',0,360],['L',0,100],['S',0,100]]};
+ const descriptions={RGB:'Красный · зелёный · синий',CMYK:'Голубой · пурпурный · жёлтый · чёрный',HLS:'Тон · светлота · насыщенность'};
+ const css=r=>'rgb('+r.map(x=>Math.round(x)).join(',')+')';
+ const hex=r=>'#'+r.map(x=>Math.round(x).toString(16).padStart(2,'0')).join('').toUpperCase();
+ const build=()=>{document.querySelector('#models').innerHTML=Object.entries(specs).map(([m,ss],idx)=>`<section class="card" data-model="${m}"><div class="cardtitle"><h2>${m}</h2><span>0${idx+1}</span></div><p>${descriptions[m]}</p>${ss.map(([n,min,max],i)=>`<div class="channel"><label for="${m}-${i}-n">${n}<small>${min}–${max}${m==='RGB'?'':n==='H'?'°':'%'}</small></label><input aria-label="${m} ${n}, точное значение" id="${m}-${i}-n" data-m="${m}" data-i="${i}" type="number" min="${min}" max="${max}" step="any"><input aria-label="${m} ${n}, ползунок" id="${m}-${i}-s" data-m="${m}" data-i="${i}" type="range" min="${min}" max="${max}" step="0.1"></div>`).join('')}<label class="picker">Выбрать из палитры <input type="color" data-palette="${m}" aria-label="Палитра ${m}"></label><div class="swatches" data-swatches="${m}"></div></section>`).join('');};
+ const render=(values,toRgb,rgb)=>{for(let [m,ss]of Object.entries(specs)){ss.forEach(([n,min,max],i)=>{for(let kind of ['n','s']){let el=document.getElementById(`${m}-${i}-${kind}`);if(el!==document.activeElement)el.value=+values[m][i].toFixed(3);}let stops=Array.from({length:17},(_,j)=>{let v=values[m].slice();v[i]=min+(max-min)*j/16;return css(toRgb(m,v))+' '+j/16*100+'%';});document.getElementById(`${m}-${i}-s`).style.background=`linear-gradient(to right,${stops.join(',')})`;});document.querySelector(`[data-palette="${m}"]`).value=hex(rgb);}document.getElementById('sample').style.background=css(rgb);document.getElementById('hex-value').textContent=hex(rgb);document.getElementById('rgb-value').textContent='RGB '+rgb.map(x=>x.toFixed(2)).join(' / ');};
+ return{specs,build,render,hex,css};
+})();
