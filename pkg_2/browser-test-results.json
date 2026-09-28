@@ -1,0 +1,34 @@
+{
+  "browser": "26.8.0.0",
+  "checks": [
+    "All formats and damaged files in actual Web Workers",
+    "Format filter",
+    "Search and multipage TIFF detail",
+    "Filtered CSV export",
+    "600 on-disk JPEG files, approximately 2 GB",
+    "100000 browser File objects and 100 table rows",
+    "Pagination",
+    "Cancellation and restart",
+    "Mobile viewport without page overflow",
+    "No JavaScript errors",
+    "Standalone HTML with 100000 files",
+    "Standalone signature warning and damaged PCX"
+  ],
+  "jpeg600": {
+    "count": 600,
+    "bytes": 1960734000,
+    "time": "0,11 с",
+    "io": "Прочитано 4,28 МБ из 1,83 ГБ · не поддерживается: 0",
+    "maxTimerGapMs": 65.5
+  },
+  "files100000": {
+    "count": 100000,
+    "kind": "Browser File objects, fixture creation excluded from timing",
+    "time": "9,86 с",
+    "io": "Прочитано 250,82 МБ из 250,82 МБ · не поддерживается: 0",
+    "maxTimerGapMs": 38.69999980926514,
+    "p95TimerGapMs": 22.40000009536743,
+    "samples": 520
+  },
+  "errors": []
+}

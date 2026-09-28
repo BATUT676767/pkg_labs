@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Графические файлы · Лабораторная №2</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<header><div><p class="eyebrow">Компьютерная графика</p><h1>Графические файлы</h1><p class="subtitle">Размеры, разрешение и структура изображений</p></div><span class="badge">Лабораторная №2</span></header>
+<section class="intro" id="drop-zone" aria-label="Загрузка изображений">
+<div><span class="eyebrow light">Исследуйте свою коллекцию</span><h2>Всё об изображениях<br>в одной таблице</h2><p>Выберите файлы или папку с вложенными каталогами.<br>До 100 000 файлов · обработка на вашем устройстве.</p><div class="actions"><button class="primary" id="choose-folder">Выбрать папку</button><button class="secondary" id="choose-files">Добавить файлы</button><button class="secondary" id="stop" disabled>Остановить</button></div><input id="folder-input" type="file" webkitdirectory multiple hidden><input id="file-input" type="file" multiple hidden></div>
+<div class="format-panel"><span class="format-symbol">▧</span><div class="formats"><span>JPEG</span><span>PNG</span><span>GIF</span><span>TIFF</span><span>BMP</span><span>PCX</span></div><p>Или перетащите файлы и папки сюда</p></div>
+</section>
+<section class="stats" aria-label="Статистика"><div><span>Обработано</span><strong id="stat-total">0 <small>/ 0</small></strong></div><div><span>Прочитано успешно</span><strong id="stat-good">0</strong></div><div><span>Ошибки</span><strong id="stat-bad">0</strong></div><div><span>Время обработки</span><strong id="stat-time">0,00 <small>с</small></strong></div></section>
+<div class="progress-line"><progress id="progress" value="0" max="1" aria-label="Прогресс сканирования"></progress><span id="progress-label">Готово к работе</span></div>
+<div class="toolbar"><label class="search">Поиск по имени<input id="search" type="search" placeholder="Название или путь к файлу"></label><label>Формат<select id="format"><option value="">Все форматы</option><option>JPEG</option><option>PNG</option><option>GIF</option><option>TIFF</option><option>BigTIFF</option><option>BMP</option><option>PCX</option></select></label><label>Статус<select id="status"><option value="">Все статусы</option><option>Готово</option><option>Файл поврежден</option><option>Ошибка чтения</option><option>Не поддерживается</option></select></label><label>Потоки<select id="threads"><option>1</option><option>2</option><option selected>4</option><option>8</option></select></label><button id="export" disabled>Экспорт CSV ↓</button></div>
+<div class="workspace"><section class="table-card"><div class="table-scroll"><table><thead><tr><th><button data-sort="name">Имя файла ↕</button></th><th><button data-sort="format">Формат ↕</button></th><th><button data-sort="width">Размер, px ↕</button></th><th>DPI, X × Y</th><th><button data-sort="depth">Бит/пиксель ↕</button></th><th>Сжатие</th><th>Статус</th></tr></thead><tbody id="rows"></tbody></table></div><div id="empty"><div class="empty-icon">▧</div><h3>Добавьте первую папку</h3><p>Здесь появятся характеристики изображений.<br>Нажмите на строку, чтобы открыть подробности.</p></div><nav class="pagination" aria-label="Страницы результатов"><span id="range">Нет файлов</span><div><button id="previous" disabled aria-label="Предыдущая страница">←</button><span id="page">1 / 1</span><button id="next" disabled aria-label="Следующая страница">→</button></div></nav></section>
+<aside class="detail-card"><div class="detail-heading"><h2>Сведения о файле</h2><span>↗</span></div><div id="preview" class="preview"><span>Выберите изображение<br>в таблице</span></div><h3 id="detail-name">Изображение не выбрано</h3><p id="detail-status">Основные поля и дополнительные характеристики появятся здесь.</p><dl id="details"></dl></aside></div>
+<div id="notice" role="status" aria-live="polite"></div>
+</main>
+<script src="model.js"></script><script src="worker.js"></script><script src="engine.js"></script><script src="view.js"></script><script src="controller.js"></script>
+</body>
+</html>

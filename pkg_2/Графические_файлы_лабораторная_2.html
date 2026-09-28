@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Графические файлы · Лабораторная №2</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#dcebea;color:#163e40;font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1600px;margin:auto;padding:30px 34px}button,input,select{font:inherit}button{cursor:pointer}button,input,select{border:1px solid #b5cfca;border-radius:8px;background:#f8fcfb;color:#163e40;padding:9px 13px}button:hover:not(:disabled){border-color:#26867c;background:#e4f2ed}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,tr:focus-visible{outline:3px solid #dca541;outline-offset:3px}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}h1,h2,h3,p{margin:0}h1{font-size:32px;line-height:1.2;letter-spacing:-1px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#587b76;margin-bottom:6px}.subtitle{margin-top:7px;color:#5a7976}.badge{border:1px solid #a5c5bf;background:#edf6f2;border-radius:30px;padding:8px 14px;white-space:nowrap}.intro{background:#164b4d;color:#f4fcf8;border-radius:15px;padding:26px 32px;display:flex;justify-content:space-between;gap:30px;transition:box-shadow .15s}.intro.drag{box-shadow:0 0 0 4px #d6a441}.intro h2{font-size:29px;line-height:1.2;letter-spacing:-.6px}.intro p{color:#bbd8d1;margin:13px 0 20px}.light{display:block;color:#9bc5bc}.actions{display:flex;flex-wrap:wrap;gap:10px}.primary{background:#c6e8d5;border-color:#c6e8d5;font-weight:650}.secondary{background:transparent;color:#e6f6ef;border-color:#58817e}.secondary:hover:not(:disabled){color:#163e40}.format-panel{width:34%;display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid #467471;padding-left:25px;text-align:center}.format-symbol{font-size:54px;line-height:1;color:#bce3d1;margin-bottom:18px}.formats{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}.formats span{border:1px solid #507e78;border-radius:5px;padding:4px 10px;font:12px ui-monospace,monospace}.format-panel p{font-size:12px;margin:12px 0 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 14px}.stats>div{background:#f4faf7;border:1px solid #bed4ce;border-radius:10px;padding:15px 20px}.stats span{display:block;font-size:12px;color:#5d7874}.stats strong{display:block;font-size:28px;line-height:1.3;font-weight:600;letter-spacing:-.6px;margin-top:3px}.stats small{font-size:15px;color:#6c8982;font-weight:400}#stat-bad{color:#a56845}.progress-line{display:flex;gap:15px;align-items:center;margin-bottom:23px}.progress-line span{font-size:12px;min-width:155px;text-align:right}progress{flex:1;height:7px;border:0;border-radius:6px;overflow:hidden;background:#c3d8d1}progress::-webkit-progress-bar{background:#c3d8d1}progress::-webkit-progress-value{background:#258278}progress::-moz-progress-bar{background:#258278}.toolbar{display:flex;gap:12px;align-items:end;margin-bottom:16px}.toolbar label{display:grid;gap:5px;font-size:11px;color:#56746e}.toolbar .search{flex:1}.toolbar input{width:100%;min-width:170px}.toolbar select{min-width:105px}.toolbar input,.toolbar select{font-size:13px}.toolbar>button{font-size:13px;height:39px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:18px;align-items:start}.table-card,.detail-card{background:#f8fcfa;border:1px solid #bcd3cc;border-radius:12px;overflow:hidden}.table-scroll{overflow:auto;min-height:45px}table{border-collapse:collapse;width:100%;text-align:left;font-size:12px;white-space:nowrap}th{font-size:10px;font-weight:600;color:#57736c;background:#eaf3ee;padding:14px 10px;border-bottom:1px solid #c9dcd4}th button{border:0;background:none;padding:0;font-size:inherit;font-weight:inherit;color:inherit}td{padding:13px 10px;border-bottom:1px solid #e2ece6;max-width:240px;overflow:hidden;text-overflow:ellipsis}td:first-child{font-weight:550}tbody tr{cursor:pointer}tbody tr:hover{background:#edf6f0}tbody tr.selected{background:#e0f0e6}.status{font-size:10px;border-radius:20px;padding:4px 7px;background:#e1f0e5;color:#2e7353;display:inline-block}.status.bad{background:#f9e9e1;color:#a25430}.status.unsupported{background:#eceeea;color:#6f766a}.warning{color:#a56845;margin-right:4px}#empty{padding:50px 15px 65px;text-align:center;color:#739087}#empty h3{color:#365e53;font-size:16px;margin:12px 0 6px}#empty p{font-size:13px}.empty-icon{font-size:45px;line-height:1}.pagination{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #dce8e0;padding:12px 15px;color:#648074;font-size:11px}.pagination>div{display:flex;align-items:center;gap:12px}.pagination button{padding:3px 9px}.detail-card{padding:18px}.detail-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.detail-heading h2{font-size:15px}.preview{background:repeating-conic-gradient(#e4eee6 0% 25%,#edf4ed 0% 50%) 50%/20px 20px;min-height:170px;display:flex;align-items:center;justify-content:center;border-radius:7px;color:#718a78;text-align:center;font-size:12px;padding:12px}.preview img{display:block;max-width:100%;max-height:250px;object-fit:contain}.detail-card h3{font-size:14px;margin:14px 0 5px;overflow-wrap:anywhere}.detail-card p{font-size:12px;color:#6e847a;overflow-wrap:anywhere}dl{margin:15px 0 0;font-size:11px}dt{border-top:1px solid #e0eae0;color:#7a8f80;padding-top:8px;margin-top:8px}dd{margin:3px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto}footer{display:flex;justify-content:space-between;gap:15px;margin-top:18px;font-size:11px;color:#69857a}a{color:#376c5b}#notice{font-size:13px;min-height:25px;margin-top:12px;color:#a25430}@media(min-width:1450px){.workspace{grid-template-columns:minmax(0,1fr) 310px}td{padding:14px 13px}th{padding:14px 13px}}@media(max-width:1050px){.workspace{grid-template-columns:1fr}.detail-card{display:grid;grid-template-columns:250px 1fr;gap:10px 20px}.detail-heading{grid-column:1/-1}.preview{grid-row:span 3}.detail-card h3{margin:0}dl{margin:0}.toolbar{flex-wrap:wrap}}@media(max-width:600px){main{padding:20px 14px}h1{font-size:25px}.badge{font-size:10px;padding:6px 8px}header{gap:10px}.subtitle{font-size:12px}.intro{padding:22px}.intro h2{font-size:25px}.format-panel{display:none}.intro p{font-size:12px}.stats{grid-template-columns:1fr 1fr;gap:8px}.stats>div{padding:12px}.stats strong{font-size:24px}.toolbar .search{flex-basis:100%}.toolbar label{flex:1}.toolbar select{min-width:0;width:100%}.detail-card{display:block}.detail-card h3{margin-top:14px}footer{flex-direction:column}.progress-line span{min-width:100px}.pagination{gap:8px}}
+.table-scroll{max-height:560px}thead{position:sticky;top:0;z-index:1}@media(max-width:600px){.toolbar label:not(.search){flex:1 1 28%}.toolbar>button{width:100%}.table-scroll{max-height:450px}}
+</style>
+</head>
+<body>
+<main>
+<header><div><p class="eyebrow">Компьютерная графика</p><h1>Графические файлы</h1><p class="subtitle">Размеры, разрешение и структура изображений</p></div><span class="badge">Лабораторная №2</span></header>
+<section class="intro" id="drop-zone" aria-label="Загрузка изображений">
+<div><span class="eyebrow light">Исследуйте свою коллекцию</span><h2>Всё об изображениях<br>в одной таблице</h2><p>Выберите файлы или папку с вложенными каталогами.<br>До 100 000 файлов · обработка на вашем устройстве.</p><div class="actions"><button class="primary" id="choose-folder">Выбрать папку</button><button class="secondary" id="choose-files">Добавить файлы</button><button class="secondary" id="stop" disabled>Остановить</button></div><input id="folder-input" type="file" webkitdirectory multiple hidden><input id="file-input" type="file" multiple hidden></div>
+<div class="format-panel"><span class="format-symbol">▧</span><div class="formats"><span>JPEG</span><span>PNG</span><span>GIF</span><span>TIFF</span><span>BMP</span><span>PCX</span></div><p>Или перетащите файлы и папки сюда</p></div>
+</section>
+<section class="stats" aria-label="Статистика"><div><span>Обработано</span><strong id="stat-total">0 <small>/ 0</small></strong></div><div><span>Прочитано успешно</span><strong id="stat-good">0</strong></div><div><span>Ошибки</span><strong id="stat-bad">0</strong></div><div><span>Время обработки</span><strong id="stat-time">0,00 <small>с</small></strong></div></section>
+<div class="progress-line"><progress id="progress" value="0" max="1" aria-label="Прогресс сканирования"></progress><span id="progress-label">Готово к работе</span></div>
+<div class="toolbar"><label class="search">Поиск по имени<input id="search" type="search" placeholder="Название или путь к файлу"></label><label>Формат<select id="format"><option value="">Все форматы</option><option>JPEG</option><option>PNG</option><option>GIF</option><option>TIFF</option><option>BigTIFF</option><option>BMP</option><option>PCX</option></select></label><label>Статус<select id="status"><option value="">Все статусы</option><option>Готово</option><option>Файл поврежден</option><option>Ошибка чтения</option><option>Не поддерживается</option></select></label><label>Потоки<select id="threads"><option>1</option><option>2</option><option selected>4</option><option>8</option></select></label><button id="export" disabled>Экспорт CSV ↓</button></div>
+<div class="workspace"><section class="table-card"><div class="table-scroll"><table><thead><tr><th><button data-sort="name">Имя файла ↕</button></th><th><button data-sort="format">Формат ↕</button></th><th><button data-sort="width">Размер, px ↕</button></th><th>DPI, X × Y</th><th><button data-sort="depth">Бит/пиксель ↕</button></th><th>Сжатие</th><th>Статус</th></tr></thead><tbody id="rows"></tbody></table></div><div id="empty"><div class="empty-icon">▧</div><h3>Добавьте первую папку</h3><p>Здесь появятся характеристики изображений.<br>Нажмите на строку, чтобы открыть подробности.</p></div><nav class="pagination" aria-label="Страницы результатов"><span id="range">Нет файлов</span><div><button id="previous" disabled aria-label="Предыдущая страница">←</button><span id="page">1 / 1</span><button id="next" disabled aria-label="Следующая страница">→</button></div></nav></section>
+<aside class="detail-card"><div class="detail-heading"><h2>Сведения о файле</h2><span>↗</span></div><div id="preview" class="preview"><span>Выберите изображение<br>в таблице</span></div><h3 id="detail-name">Изображение не выбрано</h3><p id="detail-status">Основные поля и дополнительные характеристики появятся здесь.</p><dl id="details"></dl></aside></div>
+<div id="notice" role="status" aria-live="polite"></div>
+</main>
+<script>function installMetadata() {
+  const fail = message => { throw new Error(message); };
+  const check = (value, message) => { if (!value) fail(message); };
+  const text = bytes => String.fromCharCode(...bytes);
+  class Reader {
+    constructor(file) { this.file = file; this.size = file.size; this.bytesRead = 0; this.cache = new Map(); this.operations = 0; }
+    range(offset, length) {
+      check(Number.isSafeInteger(offset) && Number.isSafeInteger(length) && offset >= 0 && length >= 0 && offset <= this.size - length, 'Данные выходят за границы файла');
+    }
+    async read(offset, length) {
+      this.range(offset, length);
+      check(++this.operations < 2000000, 'Превышен предел сложности структуры');
+      if (!length) return new Uint8Array();
+      if (length > 4096) {
+        const out = new Uint8Array(length);
+        for (let i = 0; i < length; i += 4096) out.set(await this.read(offset + i, Math.min(4096, length - i)), i);
+        return out;
+      }
+      const block = Math.floor(offset / 4096) * 4096;
+      if (offset + length > block + 4096) {
+        const first = 4096 - offset + block;
+        const out = new Uint8Array(length);
+        out.set(await this.read(offset, first));
+        out.set(await this.read(offset + first, length - first), first);
+        return out;
+      }
+      let bytes = this.cache.get(block);
+      if (!bytes) {
+        try {
+          bytes = new Uint8Array(await this.file.slice(block, Math.min(block + 4096, this.size)).arrayBuffer());
+        } catch (error) {
+          const failure = new Error(`Не удалось получить доступ к файлу: ${error.message || error.name}`);
+          failure.name = 'FileReadError';
+          throw failure;
+        }
+        check(bytes.length === Math.min(4096, this.size - block), 'Не удалось прочитать файл полностью');
+        this.bytesRead += bytes.length;
+        if (this.cache.size >= 16) this.cache.delete(this.cache.keys().next().value);
+        this.cache.set(block, bytes);
+      }
+      return bytes.subarray(offset - block, offset - block + length);
+    }
+    async view(offset, length) { const b = await this.read(offset, length); return new DataView(b.buffer, b.byteOffset, b.byteLength); }
+  }
+  const dimension = (width, height) => check(Number.isInteger(width) && Number.isInteger(height) && width > 0 && height > 0, 'Некорректные размеры изображения');
+  const compressionNames = {1:'Без сжатия',2:'CCITT RLE',3:'CCITT Group 3',4:'CCITT Group 4',5:'LZW',6:'JPEG (старый TIFF)',7:'JPEG',8:'Deflate',32773:'PackBits',32946:'Deflate'};
+  async function tiff(reader, base = 0, limit = reader.size, embedded = false) {
+    const read = async (at, n) => { check(at >= 0 && at + n <= limit - base, 'TIFF: смещение за границами блока'); return reader.view(base + at, n); };
+    const h = await read(0, 8);
+    const order = h.getUint16(0);
+    check(order === 0x4949 || order === 0x4d4d, 'TIFF: неизвестный порядок байтов');
+    const le = order === 0x4949, version = h.getUint16(2, le), big = version === 43;
+    check(version === 42 || big, 'TIFF: неверная версия');
+    const safe64 = (v, at) => { const n = v.getBigUint64(at, le); check(n <= BigInt(Number.MAX_SAFE_INTEGER), 'TIFF: слишком большое 64-битное значение'); return Number(n); };
+    let start;
+    if (big) { const b = await read(0, 16); check(b.getUint16(4, le) === 8 && b.getUint16(6, le) === 0, 'BigTIFF: неверный заголовок'); start = safe64(b, 8); }
+    else start = h.getUint32(4, le);
+    check(start > 0, 'TIFF: отсутствует IFD');
+    const sizes = {1:1,2:1,3:2,4:4,5:8,6:1,7:1,8:2,9:4,10:8,11:4,12:8,13:4,16:8,17:8,18:8};
+    const wanted = new Set([256,257,258,259,262,273,277,278,279,282,283,284,296,320,322,323,324,325,330,338,34665,34853,40965]);
+    const pending = [{offset:start, image:!embedded}], visited = new Set(), pages = [], all = [];
+    while (pending.length) {
+      check(visited.size < 4096, 'TIFF: слишком много IFD');
+      const {offset, image} = pending.shift();
+      check(!visited.has(offset), 'TIFF: циклическая или повторная ссылка IFD'); visited.add(offset);
+      const countSize = big ? 8 : 2, entrySize = big ? 20 : 12, inline = big ? 8 : 4;
+      const countData = await read(offset, countSize), count = big ? safe64(countData, 0) : countData.getUint16(0, le);
+      check(count <= 65536, 'TIFF: слишком много тегов');
+      const tableEnd = offset + countSize + count * entrySize;
+      await read(tableEnd, big ? 8 : 4);
+      const tags = new Map();
+      for (let i = 0; i < count; i++) {
+        const at = offset + countSize + i * entrySize, e = await read(at, entrySize);
+        const tag = e.getUint16(0, le), type = e.getUint16(2, le), n = big ? safe64(e, 4) : e.getUint32(4, le);
+        const size = sizes[type];
+        if (!size) { check(!wanted.has(tag), 'TIFF: неизвестный тип обязательного тега'); continue; }
+        const length = n * size;
+        check(Number.isSafeInteger(length), 'TIFF: переполнение размера тега');
+        const valuePos = big ? 12 : 8;
+        const dataOffset = length <= inline ? at + valuePos : (big ? safe64(e, valuePos) : e.getUint32(valuePos, le));
+        check(dataOffset + length <= limit - base, 'TIFF: значение тега выходит за границы');
+        if (!wanted.has(tag)) continue;
+        check(n <= 1000000, 'TIFF: слишком большой массив тега');
+        const values = [];
+        for (let j = 0; j < n; j++) {
+          const v = await read(dataOffset + j * size, size);
+          let value;
+          if ([1,2,7].includes(type)) value = v.getUint8(0);
+          else if (type === 6) value = v.getInt8(0);
+          else if (type === 3) value = v.getUint16(0,le);
+          else if (type === 8) value = v.getInt16(0,le);
+          else if ([4,13].includes(type)) value = v.getUint32(0,le);
+          else if (type === 9) value = v.getInt32(0,le);
+          else if ([5,10].includes(type)) { const get = type === 5 ? 'getUint32' : 'getInt32'; const denominator = v[get](4,le); check(denominator !== 0, 'TIFF: нулевой знаменатель RATIONAL'); value = v[get](0,le) / denominator; }
+          else if (type === 11) value = v.getFloat32(0,le);
+          else if (type === 12) value = v.getFloat64(0,le);
+          else if (type === 17) { const signed = v.getBigInt64(0,le); check(signed <= BigInt(Number.MAX_SAFE_INTEGER) && signed >= BigInt(Number.MIN_SAFE_INTEGER), 'TIFF: переполнение SLONG8'); value = Number(signed); }
+          else value = safe64(v,0);
+          check(Number.isFinite(value), 'TIFF: нечисловое значение тега'); values.push(value);
+        }
+        check(!tags.has(tag), 'TIFF: повторный тег'); tags.set(tag,values);
+      }
+      const scalar = (tag, fallback) => tags.get(tag)?.[0] ?? fallback;
+      const unit = scalar(296,2), factor = unit === 2 ? 1 : unit === 3 ? 2.54 : null;
+      const rx = scalar(282,0), ry = scalar(283,0);
+      const page = {width:scalar(256,0),height:scalar(257,0),dpi:factor && rx > 0 && ry > 0 ? [rx*factor,ry*factor] : null};
+      if (image) {
+        dimension(page.width,page.height);
+        const samples = scalar(277,1), bits = tags.get(258) || [1];
+        check(samples > 0 && samples <= 64 && bits.length === samples && bits.every(b => Number.isInteger(b) && b > 0 && b <= 64), 'TIFF: неверная глубина каналов');
+        page.depth = bits.reduce((a,b)=>a+b,0);
+        page.compression = compressionNames[scalar(259,1)] || `TIFF, код ${scalar(259,1)}`;
+        page.palette = tags.has(320) ? tags.get(320).length / 3 : 0;
+        page.channels = samples;
+        let hasData = false;
+        for (const [ot,ct] of [[273,279],[324,325]]) {
+          if (!tags.has(ot) && !tags.has(ct)) continue;
+          const offsets = tags.get(ot), counts = tags.get(ct);
+          check(offsets && counts && offsets.length > 0 && offsets.length === counts.length, 'TIFF: некорректные массивы полос/тайлов');
+          for (let i=0;i<offsets.length;i++) { check(counts[i] > 0, 'TIFF: пустая полоса/тайл'); check(offsets[i] >= 0 && offsets[i] + counts[i] <= limit-base, 'TIFF: обрезана полоса/тайл'); }
+          hasData = true;
+        }
+        check(hasData, 'TIFF: отсутствуют полосы или тайлы');
+        pages.push(page);
+      }
+      all.push(page);
+      for (const tag of [330,34665,34853,40965]) for (const value of tags.get(tag) || []) if (value) pending.push({offset:value,image:tag === 330 && !embedded});
+      const nextData = await read(tableEnd,big?8:4), next = big ? safe64(nextData,0) : nextData.getUint32(0,le);
+      if (next) pending.push({offset:next,image:!embedded && image});
+    }
+    if (embedded) return all.find(p=>p.dpi)?.dpi || null;
+    check(pages.length, 'TIFF: нет изображений');
+    return {...pages[0],format:big?'BigTIFF':'TIFF',details:{'Порядок байтов':le?'Little-endian (II)':'Big-endian (MM)','Изображений / SubIFD':pages.length,'IFD всего':visited.size,'Страницы':pages.map((p,i)=>`${i+1}: ${p.width} × ${p.height}, ${p.depth} бит, ${p.compression}`).join('; '),'Цветов в палитре':pages[0].palette || 'Нет'}};
+  }
+  async function bmp(r) {
+    const h = await r.view(0,26), fileSize = h.getUint32(2,true), pixelOffset = h.getUint32(10,true), dib = h.getUint32(14,true);
+    check(fileSize === 0 || fileSize <= r.size, 'BMP: размер файла меньше заявленного');
+    check([12,40,52,56,64,108,124].includes(dib), 'BMP: неподдерживаемый DIB-заголовок');
+    const d = await r.view(14,dib), core = dib === 12;
+    const width = core ? d.getUint16(4,true) : d.getInt32(4,true), rawHeight = core ? d.getUint16(6,true) : d.getInt32(8,true), height = Math.abs(rawHeight);
+    dimension(width,height);
+    const planes = d.getUint16(core?8:12,true), depth = d.getUint16(core?10:14,true), code = core?0:d.getUint32(16,true);
+    check(planes === 1 && [1,2,4,8,16,24,32,64].includes(depth), 'BMP: некорректные плоскости или глубина');
+    const palette = depth <= 8 ? (core?2**depth:d.getUint32(32,true)||2**depth) : (core?0:d.getUint32(32,true));
+    check(palette <= 2**Math.min(depth,24), 'BMP: неверный размер палитры');
+    const masks = dib === 40 && [3,6].includes(code) ? (code===6?16:12) : 0;
+    check(pixelOffset >= 14+dib+masks+palette*(core?3:4) && pixelOffset < r.size, 'BMP: неверное смещение пикселей/палитры');
+    const imageSize = core?0:d.getUint32(20,true), dataSize = [0,3,6].includes(code) ? Math.ceil(width*depth/32)*4*height : imageSize;
+    check(pixelOffset + Math.max(dataSize,imageSize) <= r.size, 'BMP: обрезаны пиксельные данные');
+    if (fileSize) check(pixelOffset + Math.max(dataSize,imageSize) <= fileSize, 'BMP: противоречивый размер файла');
+    check(code !== 1 || depth === 8, 'BMP: RLE8 требует 8 бит'); check(code !== 2 || depth === 4, 'BMP: RLE4 требует 4 бита');
+    const x = core?0:d.getInt32(24,true), y = core?0:d.getInt32(28,true);
+    return {format:'BMP',width,height,depth,dpi:x>0&&y>0?[x*.0254,y*.0254]:null,compression:({0:'BI_RGB — без сжатия',1:'BI_RLE8',2:'BI_RLE4',3:dib===64?'Huffman 1D':'BI_BITFIELDS',4:dib===64?'RLE24':'BI_JPEG',5:'BI_PNG',6:'BI_ALPHABITFIELDS'})[code]||`BMP, код ${code}`,details:{'DIB-заголовок':`${dib} байт`,'Цветов в палитре':palette,'Порядок строк':rawHeight<0?'Сверху вниз':'Снизу вверх','Смещение пикселей':pixelOffset}};
+  }
+  function crc32(bytes) {
+    let crc = 0xffffffff;
+    for (const b of bytes) { crc ^= b; for(let i=0;i<8;i++) crc = (crc>>>1)^((crc&1)?0xedb88320:0); }
+    return (crc^0xffffffff)>>>0;
+  }
+  async function png(r) {
+    let at=8, result, idat=false, ended=false, palette=0, chunks=0, idatEnded=false;
+    while (at<r.size) {
+      check(++chunks<1000000,'PNG: слишком много чанков');
+      const h=await r.view(at,8), n=h.getUint32(0), type=text(await r.read(at+4,4));
+      check(/^[A-Za-z]{4}$/.test(type),'PNG: неверный тип чанка'); r.range(at,n+12);
+      check(result || type==='IHDR','PNG: первый чанк должен быть IHDR');
+      if (type==='IHDR') {
+        check(!result && n===13,'PNG: неверный IHDR'); const d=await r.view(at+8,13);
+        const width=d.getUint32(0),height=d.getUint32(4),bits=d.getUint8(8),color=d.getUint8(9),channels=({0:1,2:3,3:1,4:2,6:4})[color];
+        dimension(width,height);
+        check(({0:[1,2,4,8,16],2:[8,16],3:[1,2,4,8],4:[8,16],6:[8,16]})[color]?.includes(bits),'PNG: неверная глубина или тип цвета');
+        check(d.getUint8(10)===0&&d.getUint8(11)===0&&d.getUint8(12)<=1,'PNG: неизвестное сжатие, фильтрация или чересстрочность');
+        result={format:'PNG',width,height,depth:bits*channels,dpi:null,compression:'Deflate',color,bits,details:{'Бит на канал / индекс':bits,'Тип цвета':`${color} — ${({0:'Оттенки серого',2:'RGB',3:'Палитра',4:'Серый + альфа',6:'RGBA'})[color]}`,'Метод фильтрации':'0 — адаптивный (None, Sub, Up, Average, Paeth)','Чересстрочность':d.getUint8(12)?'Adam7':'Нет'}};
+      } else if(type==='pHYs') {
+        check(n===9&&!idat,'PNG: неверный pHYs'); const d=await r.view(at+8,9), x=d.getUint32(0),y=d.getUint32(4),u=d.getUint8(8);
+        check(u<=1,'PNG: неверная единица разрешения'); if(u===1&&x>0&&y>0) result.dpi=[x*.0254,y*.0254];
+      } else if(type==='PLTE') { check(!idat&&n>0&&n%3===0&&n<=768&&!palette,'PNG: неверная палитра'); palette=n/3; }
+      else if(type==='IDAT') { check(!idatEnded,'PNG: нарушен порядок IDAT'); idat=true; }
+      else if(type==='IEND') { check(n===0&&idat,'PNG: неверный IEND или отсутствует IDAT'); ended=true; }
+      else if (type[0]===type[0].toUpperCase()) fail(`PNG: неизвестный критический чанк ${type}`);
+      if(idat && type!=='IDAT') idatEnded=true;
+      if(['IHDR','pHYs','PLTE','IEND'].includes(type)) {
+        const stored=(await r.view(at+8+n,4)).getUint32(0);
+        check(crc32(await r.read(at+4,n+4))===stored,`PNG: неверная CRC ${type}`);
+      }
+      at+=n+12; if(ended) break;
+    }
+    check(ended,'PNG: отсутствует IEND'); check(at===r.size,'PNG: данные после IEND');
+    check(result.color!==3||(palette>0&&palette<=2**result.bits),'PNG: отсутствует или неверна индексированная палитра');
+    result.details['Цветов в палитре']=palette||'Нет'; return result;
+  }
+  async function gif(r) {
+    const d=await r.view(0,13), width=d.getUint16(6,true),height=d.getUint16(8,true),packed=d.getUint8(10),globalPalette=packed&128?2**((packed&7)+1):0;
+    dimension(width,height); let at=13+globalPalette*3,frames=0,depth=0,localMax=0,ended=false;
+    r.range(0,at);
+    async function blocks() { while(true) { const n=(await r.read(at++,1))[0]; if(!n)break; r.range(at,n);at+=n; } }
+    while(at<r.size) {
+      const type=(await r.read(at++,1))[0];
+      if(type===0x3b){ended=true;break;}
+      if(type===0x21){await r.read(at++,1);await blocks();continue;}
+      check(type===0x2c,'GIF: неизвестный блок'); const frame=await r.view(at,9);at+=9;
+      const fw=frame.getUint16(4,true),fh=frame.getUint16(6,true),flags=frame.getUint8(8); dimension(fw,fh);
+      check(frame.getUint16(0,true)+fw<=width&&frame.getUint16(2,true)+fh<=height,'GIF: кадр выходит за логический экран');
+      const local=flags&128?2**((flags&7)+1):0,colors=local||globalPalette;
+      check(colors>0,'GIF: отсутствует палитра'); localMax=Math.max(localMax,local);depth=Math.max(depth,Math.log2(colors));
+      r.range(at,local*3);at+=local*3; const lzw=(await r.read(at++,1))[0]; check(lzw>=2&&lzw<=8,'GIF: неверный размер кода LZW');
+      await blocks();frames++;
+    }
+    check(ended&&frames>0,'GIF: отсутствует завершающий блок или кадры');
+    return {format:'GIF',width,height,depth,dpi:null,compression:'LZW',details:{'Кадров':frames,'Цветов в глобальной палитре':globalPalette,'Максимальная локальная палитра':localMax,'Цветовая разрешающая способность':((packed>>4)&7)+1,'DPI':'В формате не хранится'}};
+  }
+  async function pcx(r) {
+    const d=await r.view(0,128),version=d.getUint8(1),encoding=d.getUint8(2),bits=d.getUint8(3),planes=d.getUint8(65),line=d.getUint16(66,true);
+    check([0,2,3,4,5].includes(version)&&[0,1].includes(encoding)&&[1,2,4,8].includes(bits)&&planes>0&&planes<=4,'PCX: неверный заголовок');
+    const width=d.getUint16(8,true)-d.getUint16(4,true)+1,height=d.getUint16(10,true)-d.getUint16(6,true)+1; dimension(width,height);
+    check(line>=Math.ceil(width*bits/8)&&line%2===0,'PCX: неверная длина строки');
+    let end=r.size,palette=bits*planes<=4?16:0;
+    if(bits===8&&planes===1&&version===5) {
+      check(r.size>=897&&(await r.read(r.size-769,1))[0]===12,'PCX: отсутствует 256-цветная палитра'); end-=769;palette=256;
+    }
+    const decoded=line*planes*height,encoded=end-128;
+    check(encoded>0&&encoded>=(encoding?Math.floor(decoded/63)*2+Math.min(2,decoded%63):decoded),'PCX: обрезаны пиксельные данные');
+    if(encoding) {
+      let produced=0,pending=0;
+      for(let offset=128;offset<end;offset+=65536) {
+        const block=await r.read(offset,Math.min(65536,end-offset));
+        for(const value of block) {
+          if(pending){produced+=pending;pending=0;}
+          else if((value&192)===192){pending=value&63;check(pending>0,'PCX: нулевая серия RLE');}
+          else produced++;
+          check(produced<=decoded,'PCX: RLE превышает размер изображения');
+        }
+      }
+      check(!pending&&produced===decoded,'PCX: обрезан поток RLE');
+    }
+    const x=d.getUint16(12,true),y=d.getUint16(14,true);
+    return {format:'PCX',width,height,depth:bits*planes,dpi:x>0&&y>0?[x,y]:null,compression:encoding?'RLE':'Без сжатия',details:{'Версия':version,'Бит на плоскость':bits,'Плоскостей':planes,'Байт строки на плоскость':line,'Цветов в палитре':palette||'Нет'}};
+  }
+  async function jpeg(r) {
+    check(r.size>=4,'JPEG: обрезанный файл'); const tail=await r.read(r.size-2,2);
+    check(tail[0]===255&&tail[1]===217,'JPEG: отсутствует EOI (FF D9)');
+    let at=2,result=null,dpi=null,exifDpi=null,quant=[],sos=false,segments=0;
+    const sof=new Set([0xc0,0xc1,0xc2,0xc3,0xc5,0xc6,0xc7,0xc9,0xca,0xcb,0xcd,0xce,0xcf]);
+    while(at<r.size-2) {
+      check(++segments<100000,'JPEG: слишком много сегментов');
+      check((await r.read(at++,1))[0]===255,'JPEG: неверный маркер');
+      let marker; do {marker=(await r.read(at++,1))[0];} while(marker===255);
+      check(marker!==0&&marker!==0xd8&&marker!==0xd9,'JPEG: неожиданный маркер');
+      if(marker===1||(marker>=0xd0&&marker<=0xd7))continue;
+      const length=(await r.view(at,2)).getUint16(0); check(length>=2,'JPEG: неверная длина сегмента');r.range(at,length);
+      const start=at+2,n=length-2;
+      if(sof.has(marker)) {
+        check(n>=6,'JPEG: обрезан SOF');const d=await r.view(start,6),bits=d.getUint8(0),height=d.getUint16(1),width=d.getUint16(3),channels=d.getUint8(5);
+        dimension(width,height);check(bits>0&&bits<=16&&channels>0&&n===6+channels*3,'JPEG: неверный SOF');
+        result={format:'JPEG',width,height,depth:bits*channels,compression:[0xc3,0xc7,0xcb,0xcf].includes(marker)?'JPEG lossless':([0xc2,0xc6,0xca,0xce].includes(marker)?'JPEG progressive':'JPEG sequential'),details:{'Бит на компоненту':bits,'Компонент':channels,'SOF':`FF ${marker.toString(16).toUpperCase()}`}};
+      } else if(marker===0xe0&&n>=14&&text(await r.read(start,5))==='JFIF\0') {
+        const d=await r.view(start,14),unit=d.getUint8(7),x=d.getUint16(8),y=d.getUint16(10);
+        if((unit===1||unit===2)&&x>0&&y>0)dpi=[x*(unit===2?2.54:1),y*(unit===2?2.54:1)];
+      } else if(marker===0xe1&&n>=14&&text(await r.read(start,6))==='Exif\0\0') exifDpi=await tiff(r,start+6,at+length,true);
+      else if(marker===0xdb) {
+        let p=start;
+        while(p<at+length){const q=(await r.read(p++,1))[0],precision=q>>4,id=q&15;check(precision<=1&&id<=3,'JPEG: неверная DQT'); const size=64*(precision+1);check(p+size<=at+length,'JPEG: обрезана DQT');const d=await r.view(p,size); const values=Array.from({length:64},(_,i)=>precision?d.getUint16(i*2):d.getUint8(i));check(values.every(v=>v>0),'JPEG: нулевая квантовка');quant.push(`Таблица ${id} (${precision?16:8} бит), zigzag: ${values.join(', ')}`);p+=size;}
+      } else if(marker===0xda) {
+        check(result&&n>=4,'JPEG: SOS без SOF');const count=(await r.read(start,1))[0];check(count>0&&n===1+count*2+3,'JPEG: неверный SOS');sos=true;break;
+      }
+      at+=length;
+    }
+    check(result&&sos,'JPEG: отсутствует SOF или SOS');result.dpi=exifDpi||dpi;
+    result.details['Источник DPI']=exifDpi?'Exif IFD':dpi?'JFIF':'Не задан';result.details['Матрицы квантования']=quant.join('\n')||'Не заданы';return result;
+  }
+  async function parse(file) {
+    const r=new Reader(file),base={name:file.name||'Без имени',path:file.webkitRelativePath||file.name||'',size:file.size};
+    try {
+      const b=await r.read(0,Math.min(16,r.size));let parser;
+      if(b.length>=8&&[137,80,78,71,13,10,26,10].every((v,i)=>b[i]===v)) parser=png;
+      else if(b[0]===255&&b[1]===216)parser=jpeg;
+      else if(['GIF87a','GIF89a'].includes(text(b.subarray(0,6))))parser=gif;
+      else if(b[0]===66&&b[1]===77)parser=bmp;
+      else if((b[0]===73&&b[1]===73)||(b[0]===77&&b[1]===77))parser=tiff;
+      else if(b[0]===10)parser=pcx;
+      else {
+        const ext=(base.name.split('.').pop()||'').toLowerCase();
+        return {...base,status:/^(jpe?g|gif|tiff?|bmp|png|pcx)$/.test(ext)?'Файл поврежден':'Не поддерживается',error:'Сигнатура не соответствует поддерживаемым форматам',bytesRead:r.bytesRead};
+      }
+      const data=await parser(r),extension=(base.name.split('.').pop()||'').toLowerCase(),extensions={JPEG:['jpg','jpeg','jpe'],TIFF:['tif','tiff'],BigTIFF:['tif','tiff','btf'],BMP:['bmp','dib'],PNG:['png'],GIF:['gif'],PCX:['pcx']};
+      return {...base,...data,status:'Готово',warning:extensions[data.format].includes(extension)?'':'Расширение не соответствует сигнатуре',bytesRead:r.bytesRead};
+    } catch(error) {return {...base,status:error.name==='FileReadError'?'Ошибка чтения':'Файл поврежден',error:error.message||'Ошибка чтения',bytesRead:r.bytesRead};}
+    finally {r.cache.clear();}
+  }
+  globalThis.Metadata={parse,Reader,crc32};
+}
+installMetadata();
+if(typeof module!=='undefined') module.exports={...globalThis.Metadata,installMetadata};
+</script><script>function metadataWorker() {
+  let requestId=0;
+  const pending=new Map();
+  function readRange(index,start,end) {
+    return new Promise((resolve,reject)=>{
+      const id=++requestId;
+      pending.set(id,{resolve,reject});
+      self.postMessage({type:'read-range',id,index,start,end});
+    });
+  }
+  self.onmessage = async ({data}) => {
+    if(data.type==='read-range-result') {
+      const request=pending.get(data.id);
+      if(!request)return;
+      pending.delete(data.id);
+      if(data.error)request.reject(new Error(data.error));else request.resolve(data.buffer);
+      return;
+    }
+    const results = [];
+    for (const item of data.items) {
+      let useMainReader=false;
+      const source={name:item.file.name,size:item.file.size,webkitRelativePath:item.file.webkitRelativePath,slice(start,end){
+        return {async arrayBuffer(){
+          if(!useMainReader) {
+            try{return await item.file.slice(start,end).arrayBuffer();}
+            catch {useMainReader=true;}
+          }
+          return readRange(item.index,start,end);
+        }};
+      }};
+      results.push({index:item.index,...await Metadata.parse(source)});
+    }
+    self.postMessage({results});
+  };
+}
+</script><script>class ScanEngine {
+  constructor(onUpdate) { this.onUpdate=onUpdate;this.workers=[];this.generation=0;this.running=false;this.results=[];this.files=[]; }
+  cancel() {
+    this.generation++;for(const worker of this.workers)worker.terminate();this.workers=[];
+    if(this.workerURL)URL.revokeObjectURL(this.workerURL);this.workerURL=null;
+    this.running=false;
+  }
+  start(files, threads=4) {
+    this.cancel();this.files=Array.from(files);this.results=[];
+    if(this.files.length>100000)throw new Error('Можно выбрать не более 100 000 файлов за один запуск');
+    this.total=this.files.length;this.completed=0;this.bytesRead=0;this.inputBytes=this.files.reduce((sum,f)=>sum+f.size,0);this.started=performance.now();this.elapsed=0;this.running=this.total>0;
+    this.counts={good:0,bad:0,unsupported:0};let cursor=0;const generation=this.generation;
+    const notify=()=>{this.elapsed=performance.now()-this.started;this.onUpdate(this);};
+    if(!this.running){notify();return;}
+    this.workerURL=URL.createObjectURL(new Blob([`(${installMetadata.toString()})();(${metadataWorker.toString()})();`],{type:'text/javascript'}));
+    const dispatch=worker=>{
+      if(generation!==this.generation)return;
+      if(cursor>=this.total)return;
+      const items=[];for(let i=0;i<16&&cursor<this.total;i++,cursor++)items.push({index:cursor,file:this.files[cursor]});
+      worker.postMessage({items});
+    };
+    try {
+      for(let i=0;i<Math.min(Math.max(1,threads),8,Math.ceil(this.total/16));i++) {
+        const worker=new Worker(this.workerURL);this.workers.push(worker);
+        worker.onmessage=async ({data})=>{
+          if(generation!==this.generation)return;
+          if(data.type==='read-range') {
+            try {
+              const file=this.files[data.index];
+              if(!file||!Number.isSafeInteger(data.start)||!Number.isSafeInteger(data.end)||data.start<0||data.end<data.start||data.end>file.size||data.end-data.start>4096)throw new Error('Недопустимый диапазон чтения');
+              const blob=file.slice(data.start,data.end);
+              let buffer;
+              try {buffer=await blob.arrayBuffer();}
+              catch {
+                buffer=await new Promise((resolve,reject)=>{
+                  const reader=new FileReader();
+                  reader.onload=()=>resolve(reader.result);
+                  reader.onerror=()=>reject(reader.error||new Error('Доступ к файлу запрещён'));
+                  reader.readAsArrayBuffer(blob);
+                });
+              }
+              if(generation===this.generation)worker.postMessage({type:'read-range-result',id:data.id,buffer},[buffer]);
+            } catch(error) {
+              if(generation===this.generation)worker.postMessage({type:'read-range-result',id:data.id,error:error.message});
+            }
+            return;
+          }
+          for(const result of data.results){result.path=this.files[result.index].webkitRelativePath||result.name;this.results.push(result);this.completed++;this.bytesRead+=result.bytesRead||0;this.counts[result.status==='Готово'?'good':result.status==='Не поддерживается'?'unsupported':'bad']++;}
+          if(this.completed===this.total){this.elapsed=performance.now()-this.started;this.cancel();this.onUpdate(this);}
+          else {dispatch(worker);notify();}
+        };
+        worker.onerror=event=>{event.preventDefault();this.error=event.message||'Не удалось запустить рабочий поток';this.elapsed=performance.now()-this.started;this.cancel();this.onUpdate(this);};
+        dispatch(worker);
+      }
+    } catch(error) {this.cancel();throw new Error(`Не удалось создать Worker: ${error.message}`);}
+    this.error='';notify();
+  }
+}
+if(typeof module!=='undefined')module.exports={ScanEngine};
+</script><script>const FileView = {
+  node(id) {return document.getElementById(id);},
+  bytes(value) {const units=['Б','КБ','МБ','ГБ'];let i=0;while(value>=1024&&i<3){value/=1024;i++;}return `${value.toLocaleString('ru-RU',{maximumFractionDigits:i?2:0})} ${units[i]}`;},
+  number(value) {return value.toLocaleString('ru-RU',{maximumFractionDigits:2});},
+  dpi(value) {return value?value.map(v=>this.number(v)).join(' × '):'Не задано';},
+  stats(engine) {
+    this.node('stat-total').replaceChildren(document.createTextNode(this.number(engine.completed)),Object.assign(document.createElement('small'),{textContent:` / ${this.number(engine.total)}`}));
+    this.node('stat-good').textContent=this.number(engine.counts.good);this.node('stat-bad').textContent=this.number(engine.counts.bad);
+    this.node('stat-time').replaceChildren(document.createTextNode(this.number(engine.elapsed/1000)),Object.assign(document.createElement('small'),{textContent:' с'}));
+    this.node('progress').max=Math.max(1,engine.total);this.node('progress').value=engine.completed;
+    this.node('progress-label').textContent=engine.running?`${Math.round(engine.completed/engine.total*100)}% · сканирование`:engine.completed===engine.total?'Обработка завершена':'Обработка остановлена';
+    this.node('stop').disabled=!engine.running;this.node('export').disabled=engine.results.length===0;
+  },
+  rows(results,page,size,selected,onSelect) {
+    const body=this.node('rows'),fragment=document.createDocumentFragment();
+    for(const row of results.slice(page*size,(page+1)*size)) {
+      const tr=document.createElement('tr');tr.tabIndex=0;tr.classList.toggle('selected',row.index===selected);tr.setAttribute('aria-selected',String(row.index===selected));
+      const values=[row.name,row.format||'—',row.width?`${row.width} × ${row.height}`:'—',this.dpi(row.dpi),row.depth??'—',row.compression||'—'];
+      for(let i=0;i<values.length;i++) {const td=document.createElement('td');td.textContent=values[i];td.title=i===0?row.path:String(values[i]);if(i===0&&row.warning){const warning=document.createElement('span');warning.textContent='⚠ ';warning.className='warning';warning.title=row.warning;td.prepend(warning);}tr.append(td);}
+      const td=document.createElement('td'),badge=document.createElement('span');badge.className=`status ${['Файл поврежден','Ошибка чтения'].includes(row.status)?'bad':row.status==='Не поддерживается'?'unsupported':''}`;badge.textContent=row.status;badge.title=row.error||row.warning||'Структура метаданных прочитана';td.append(badge);tr.append(td);
+      tr.onclick=()=>onSelect(row);tr.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onSelect(row);}};fragment.append(tr);
+    }
+    body.replaceChildren(fragment);this.node('empty').hidden=results.length>0;
+    if(!results.length){this.node('empty').querySelector('h3').textContent=this.hasScanned?'Ничего не найдено':'Добавьте первую папку';}
+    const pages=Math.max(1,Math.ceil(results.length/size));this.node('page').textContent=`${page+1} / ${pages}`;
+    this.node('range').textContent=results.length?`${page*size+1}–${Math.min((page+1)*size,results.length)} из ${this.number(results.length)}`:'Нет файлов';this.node('previous').disabled=page===0;this.node('next').disabled=page>=pages-1;
+  },
+  detail(row,file) {
+    if(this.previewURL)URL.revokeObjectURL(this.previewURL);this.previewURL=null;
+    const preview=this.node('preview');preview.replaceChildren();
+    this.node('detail-name').textContent=row?.name||'Изображение не выбрано';
+    this.node('detail-status').textContent=row?[row.status,row.warning,row.error].filter(Boolean).join(' · '):'Основные поля и дополнительные характеристики появятся здесь.';
+    const details=this.node('details');details.replaceChildren();
+    if(!row){preview.textContent='Выберите изображение в таблице';return;}
+    const data={'Путь':row.path,'Размер файла':this.bytes(row.size),'Прочитано для анализа':this.bytes(row.bytesRead),'Размер изображения':row.width?`${row.width} × ${row.height} px`:'—','Разрешение':this.dpi(row.dpi),'Глубина цвета':row.depth?`${row.depth} бит/пиксель`:'—',...row.details};
+    for(const [key,value] of Object.entries(data)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;details.append(dt,dd);}
+    if(row.status!=='Готово'){preview.textContent='Предпросмотр недоступен';return;}
+    if(!['JPEG','PNG','GIF','BMP'].includes(row.format)){preview.textContent='Для этого формата доступен анализ метаданных. Браузерный предпросмотр не поддерживается.';return;}
+    if(row.width*row.height>40000000||row.size>100*1024*1024){preview.textContent='Предпросмотр отключён для большого изображения';return;}
+    const image=document.createElement('img');image.alt=row.name;this.previewURL=URL.createObjectURL(file);image.src=this.previewURL;image.onerror=()=>{if(preview.contains(image))preview.textContent='Браузер не смог показать изображение';};preview.append(image);
+  }
+};
+</script><script>(() => {
+  const view=FileView,$=id=>view.node(id),size=100;
+  let page=0,selected=null,filtered=[],dirty=true,sortKey='name',direction=1,lastRender=0,frame=null,enumeration=0;
+  const collator=new Intl.Collator('ru',{numeric:true,sensitivity:'base'});
+  const engine=new ScanEngine(state=>{dirty=true;view.stats(state);if(state.error)$('notice').textContent=state.error;schedule(!state.running);});
+  function render() {
+    frame=null;lastRender=performance.now();
+    if(dirty){const query=$('search').value.trim().toLocaleLowerCase(),format=$('format').value,status=$('status').value;
+      filtered=engine.results.filter(row=>(!query||row.path.toLocaleLowerCase().includes(query))&&(!format||row.format===format||(!row.format&&({JPEG:/\.jpe?g$/i,PNG:/\.png$/i,GIF:/\.gif$/i,TIFF:/\.tiff?$/i,BigTIFF:/\.btf$/i,BMP:/\.bmp$/i,PCX:/\.pcx$/i})[format]?.test(row.name)))&&(!status||row.status===status));
+      filtered.sort((a,b)=>direction*(typeof a[sortKey]==='number'&&typeof b[sortKey]==='number'?a[sortKey]-b[sortKey]:collator.compare(String(a[sortKey]??''),String(b[sortKey]??''))));dirty=false;
+    }
+    page=Math.min(page,Math.max(0,Math.ceil(filtered.length/size)-1));view.rows(filtered,page,size,selected,row=>{selected=row.index;view.detail(row,engine.files[row.index]);render();});
+  }
+  function schedule(immediate=false){if(frame!==null)clearTimeout(frame);frame=setTimeout(render,immediate?0:Math.max(0,350-(performance.now()-lastRender)));}
+  function start(files) {
+    enumeration++;$('notice').textContent='';selected=null;page=0;view.detail(null);view.hasScanned=true;
+    try{engine.start(files,Number($('threads').value));}catch(error){$('notice').textContent=error.message;}
+    dirty=true;schedule(true);
+  }
+  $('choose-folder').onclick=()=>$('folder-input').click();$('choose-files').onclick=()=>$('file-input').click();
+  for(const id of ['folder-input','file-input'])$(id).onchange=event=>{const files=Array.from(event.target.files);if(files.length)start(files);};
+  $('stop').onclick=()=>{enumeration++;engine.cancel();view.stats(engine);schedule(true);};
+  for(const id of ['search','format','status'])$(id).addEventListener('input',()=>{dirty=true;page=0;schedule(true);});
+  $('previous').onclick=()=>{page--;render();};$('next').onclick=()=>{page++;render();};
+  for(const button of document.querySelectorAll('[data-sort]'))button.onclick=()=>{if(sortKey===button.dataset.sort)direction*=-1;else{sortKey=button.dataset.sort;direction=1;}dirty=true;render();};
+  $('export').onclick=()=>{
+    if(dirty)render();
+    const quote=value=>'"'+String(value??'').replace(/^[=+@\-\t\r]/,"'$&").replaceAll('"','""')+'"';
+    const lines=[['Имя файла','Путь','Формат','Ширина, px','Высота, px','DPI X','DPI Y','Бит/пиксель','Сжатие','Размер файла, байт','Статус','Причина','Предупреждение'].map(quote).join(';')];
+    for(const r of filtered)lines.push([r.name,r.path,r.format,r.width,r.height,r.dpi?.[0],r.dpi?.[1],r.depth,r.compression,r.size,r.status,r.error,r.warning].map(quote).join(';'));
+    const url=URL.createObjectURL(new Blob(['\ufeff',lines.join('\r\n')],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='image-metadata.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+  const zone=$('drop-zone');
+  zone.ondragover=event=>{event.preventDefault();zone.classList.add('drag');};zone.ondragleave=()=>zone.classList.remove('drag');
+  zone.ondrop=async event=>{
+    event.preventDefault();zone.classList.remove('drag');
+    const items=Array.from(event.dataTransfer.items),fallback=Array.from(event.dataTransfer.files),entries=items.map(item=>item.webkitGetAsEntry?.()).filter(Boolean);
+    if(!entries.length){start(fallback);return;}
+    const generation=++enumeration;engine.cancel();$('stop').disabled=false;$('notice').textContent='Получаю список файлов…';const files=[];
+    async function visit(entry,path=''){
+      if(generation!==enumeration)return;
+      if(entry.isFile){const file=await new Promise((resolve,reject)=>entry.file(resolve,reject));Object.defineProperty(file,'webkitRelativePath',{value:path+file.name});files.push(file);if(files.length>100000)throw new Error('В папке более 100 000 файлов');}
+      else if(entry.isDirectory){const reader=entry.createReader();while(generation===enumeration){const children=await new Promise((resolve,reject)=>reader.readEntries(resolve,reject));if(!children.length)break;for(const child of children)await visit(child,path+entry.name+'/');}}
+    }
+    try{for(const entry of entries)await visit(entry);if(generation===enumeration)start(files);}catch(error){if(generation===enumeration){$('notice').textContent=error.message;$('stop').disabled=true;}}
+  };
+  window.addEventListener('beforeunload',()=>engine.cancel());render();
+})();
+</script>
+</body>
+</html>

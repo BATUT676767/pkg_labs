@@ -1,0 +1,707 @@
+{
+  "total": 175,
+  "passed": 175,
+  "failed": [],
+  "checks": [
+    {
+      "name": "TIFF II 64 tiles",
+      "passed": true
+    },
+    {
+      "name": "TIFF II 64 strips",
+      "passed": true
+    },
+    {
+      "name": "TIFF II 32 tiles",
+      "passed": true
+    },
+    {
+      "name": "TIFF II 32 strips",
+      "passed": true
+    },
+    {
+      "name": "TIFF MM 64 tiles",
+      "passed": true
+    },
+    {
+      "name": "TIFF MM 64 strips",
+      "passed": true
+    },
+    {
+      "name": "TIFF MM 32 tiles",
+      "passed": true
+    },
+    {
+      "name": "TIFF MM 32 strips",
+      "passed": true
+    },
+    {
+      "name": "TIFF сантиметры",
+      "passed": true
+    },
+    {
+      "name": "TIFF относительное разрешение",
+      "passed": true
+    },
+    {
+      "name": "TIFF повреждение {\"cycle\":true}",
+      "passed": true
+    },
+    {
+      "name": "TIFF повреждение {\"badOffset\":true}",
+      "passed": true
+    },
+    {
+      "name": "BMP RLE4",
+      "passed": true
+    },
+    {
+      "name": "BMP RLE8",
+      "passed": true
+    },
+    {
+      "name": "PNG RGBA и DPI",
+      "passed": true
+    },
+    {
+      "name": "PNG без IEND",
+      "passed": true
+    },
+    {
+      "name": "PNG неверная CRC",
+      "passed": true
+    },
+    {
+      "name": "PNG огромный чанк",
+      "passed": true
+    },
+    {
+      "name": "Текст с расширением JPG",
+      "passed": true
+    },
+    {
+      "name": "Неподдерживаемый текст",
+      "passed": true
+    },
+    {
+      "name": "Пустой файл",
+      "passed": true
+    },
+    {
+      "name": "PNG под расширением JPG",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.bmp",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.pcx",
+      "passed": true
+    },
+    {
+      "name": "Эталон 1.jpeg",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.bmp",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.pcx",
+      "passed": true
+    },
+    {
+      "name": "Эталон L.jpeg",
+      "passed": true
+    },
+    {
+      "name": "Эталон P.bmp",
+      "passed": true
+    },
+    {
+      "name": "Эталон P.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон P.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон P.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон P.pcx",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.bmp",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.pcx",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGB.jpeg",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGBA.bmp",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGBA.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGBA.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон RGBA.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон I_16.png",
+      "passed": true
+    },
+    {
+      "name": "Эталон I_16.gif",
+      "passed": true
+    },
+    {
+      "name": "Эталон I_16.tiff",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-raw.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-tiff_lzw.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-tiff_adobe_deflate.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-packbits.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-jpeg.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-group3.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон tiff-group4.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон progressive.jpg",
+      "passed": true
+    },
+    {
+      "name": "Эталон multipage.tif",
+      "passed": true
+    },
+    {
+      "name": "Эталон renamed.png",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-P.gif",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-RGB.bmp",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-RGB.jpeg",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-RGB.pcx",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-RGB.png",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный cut-RGB.tiff",
+      "passed": true
+    },
+    {
+      "name": "JPEG Exif важнее JFIF",
+      "passed": true
+    },
+    {
+      "name": "JPEG ленивое чтение 3 МБ",
+      "passed": true
+    },
+    {
+      "name": "Многостраничный TIFF",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig1.15(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig1.15(b).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig10.15(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig10.29(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig2.19(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig2.22(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.15(a)1top.bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.15(a)2.bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.15(a)3.bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.15(a)4.bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.27(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.35(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.37(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig3.45(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig4.19(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig4.20(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig4.28(a).BMP",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig5.04(i).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig5.08(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig5.08(b).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig5.10(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig9.11(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig9.14(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Проверочная папка Fig9.16(a).bmp",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 0",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 1",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 2",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 3",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 4",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 5",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 6",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 7",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 8",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 9",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 10",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 11",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 12",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 13",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 14",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 15",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 16",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 17",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 18",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 19",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 20",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 21",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 22",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 23",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 24",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 25",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 26",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 27",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 28",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 29",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 30",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 31",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 32",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 33",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 34",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 35",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 36",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 37",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 38",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 39",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 40",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 41",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 42",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 43",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 44",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 45",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 46",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 47",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 48",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 49",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 50",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 51",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 52",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 53",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 54",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 55",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 56",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 57",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 58",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 59",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 60",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 61",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 62",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 63",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 64",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 65",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 66",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 67",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 68",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 69",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 70",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 71",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 72",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 73",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 74",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 75",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 76",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 77",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 78",
+      "passed": true
+    },
+    {
+      "name": "Обрезанный TIFF 79",
+      "passed": true
+    }
+  ]
+}
