@@ -1,0 +1,369 @@
+{
+  "date": "2026-10-20T06:09:29.963Z",
+  "seed": 20261020,
+  "repetitions": 3,
+  "grid": "257 × 257",
+  "environment": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 YaBrowser/26.8.0.0 Safari/537.36",
+  "rows": [
+    {
+      "axis": "count",
+      "algorithm": "step",
+      "count": 1000,
+      "length": 126,
+      "ms": 0.5999999046325684,
+      "min": 0.19999980926513672,
+      "max": 0.6000003814697266,
+      "pixels": 26518
+    },
+    {
+      "axis": "count",
+      "algorithm": "dda",
+      "count": 1000,
+      "length": 126,
+      "ms": 0.19999980926513672,
+      "min": 0.10000038146972656,
+      "max": 0.5,
+      "pixels": 26514
+    },
+    {
+      "axis": "count",
+      "algorithm": "bresenham",
+      "count": 1000,
+      "length": 126,
+      "ms": 0.5,
+      "min": 0.39999961853027344,
+      "max": 0.5,
+      "pixels": 26548
+    },
+    {
+      "axis": "count",
+      "algorithm": "wu",
+      "count": 1000,
+      "length": 126,
+      "ms": 1.200000286102295,
+      "min": 1,
+      "max": 1.299999713897705,
+      "pixels": 35941
+    },
+    {
+      "axis": "count",
+      "algorithm": "castle",
+      "count": 1000,
+      "length": 126,
+      "ms": 1.1999998092651367,
+      "min": 1.0999999046325684,
+      "max": 1.200000286102295,
+      "pixels": 26548
+    },
+    {
+      "axis": "count",
+      "algorithm": "step",
+      "count": 10000,
+      "length": 126,
+      "ms": 2.1999998092651367,
+      "min": 2,
+      "max": 2.3000001907348633,
+      "pixels": 54135
+    },
+    {
+      "axis": "count",
+      "algorithm": "dda",
+      "count": 10000,
+      "length": 126,
+      "ms": 1.6999998092651367,
+      "min": 1.5999999046325684,
+      "max": 1.700000286102295,
+      "pixels": 54132
+    },
+    {
+      "axis": "count",
+      "algorithm": "bresenham",
+      "count": 10000,
+      "length": 126,
+      "ms": 2.0999999046325684,
+      "min": 1.9000000953674316,
+      "max": 2.0999999046325684,
+      "pixels": 54122
+    },
+    {
+      "axis": "count",
+      "algorithm": "wu",
+      "count": 10000,
+      "length": 126,
+      "ms": 4.5,
+      "min": 4.400000095367432,
+      "max": 7.199999809265137,
+      "pixels": 58339
+    },
+    {
+      "axis": "count",
+      "algorithm": "castle",
+      "count": 10000,
+      "length": 126,
+      "ms": 6.200000286102295,
+      "min": 5.800000190734863,
+      "max": 6.299999713897705,
+      "pixels": 54122
+    },
+    {
+      "axis": "count",
+      "algorithm": "step",
+      "count": 50000,
+      "length": 126,
+      "ms": 9.599999904632568,
+      "min": 9.5,
+      "max": 9.800000190734863,
+      "pixels": 61740
+    },
+    {
+      "axis": "count",
+      "algorithm": "dda",
+      "count": 50000,
+      "length": 126,
+      "ms": 8.299999713897705,
+      "min": 8.200000286102295,
+      "max": 8.700000286102295,
+      "pixels": 61741
+    },
+    {
+      "axis": "count",
+      "algorithm": "bresenham",
+      "count": 50000,
+      "length": 126,
+      "ms": 10.400000095367432,
+      "min": 10.199999809265137,
+      "max": 10.599999904632568,
+      "pixels": 61736
+    },
+    {
+      "axis": "count",
+      "algorithm": "wu",
+      "count": 50000,
+      "length": 126,
+      "ms": 22.09999990463257,
+      "min": 22,
+      "max": 22.300000190734863,
+      "pixels": 62758
+    },
+    {
+      "axis": "count",
+      "algorithm": "castle",
+      "count": 50000,
+      "length": 126,
+      "ms": 30.600000381469727,
+      "min": 29.799999713897705,
+      "max": 31.300000190734863,
+      "pixels": 61736
+    },
+    {
+      "axis": "count",
+      "algorithm": "step",
+      "count": 100000,
+      "length": 126,
+      "ms": 20.09999990463257,
+      "min": 19.700000286102295,
+      "max": 20.199999809265137,
+      "pixels": 62923
+    },
+    {
+      "axis": "count",
+      "algorithm": "dda",
+      "count": 100000,
+      "length": 126,
+      "ms": 16.90000009536743,
+      "min": 16.59999990463257,
+      "max": 17,
+      "pixels": 62924
+    },
+    {
+      "axis": "count",
+      "algorithm": "bresenham",
+      "count": 100000,
+      "length": 126,
+      "ms": 21.699999809265137,
+      "min": 21,
+      "max": 21.800000190734863,
+      "pixels": 62921
+    },
+    {
+      "axis": "count",
+      "algorithm": "wu",
+      "count": 100000,
+      "length": 126,
+      "ms": 45.09999990463257,
+      "min": 44.90000009536743,
+      "max": 45.19999980926514,
+      "pixels": 63422
+    },
+    {
+      "axis": "count",
+      "algorithm": "castle",
+      "count": 100000,
+      "length": 126,
+      "ms": 61,
+      "min": 60.299999713897705,
+      "max": 61.59999990463257,
+      "pixels": 62921
+    },
+    {
+      "axis": "length",
+      "algorithm": "step",
+      "count": 100000,
+      "length": 8,
+      "ms": 7.400000095367432,
+      "min": 7.299999713897705,
+      "max": 7.900000095367432,
+      "pixels": 289
+    },
+    {
+      "axis": "length",
+      "algorithm": "dda",
+      "count": 100000,
+      "length": 8,
+      "ms": 6.799999713897705,
+      "min": 6.599999904632568,
+      "max": 7.100000381469727,
+      "pixels": 289
+    },
+    {
+      "axis": "length",
+      "algorithm": "bresenham",
+      "count": 100000,
+      "length": 8,
+      "ms": 8.5,
+      "min": 8.299999713897705,
+      "max": 9.100000381469727,
+      "pixels": 289
+    },
+    {
+      "axis": "length",
+      "algorithm": "step",
+      "count": 100000,
+      "length": 32,
+      "ms": 10.599999904632568,
+      "min": 10.400000095367432,
+      "max": 10.599999904632568,
+      "pixels": 4223
+    },
+    {
+      "axis": "length",
+      "algorithm": "dda",
+      "count": 100000,
+      "length": 32,
+      "ms": 9.300000190734863,
+      "min": 9.199999809265137,
+      "max": 9.599999904632568,
+      "pixels": 4223
+    },
+    {
+      "axis": "length",
+      "algorithm": "bresenham",
+      "count": 100000,
+      "length": 32,
+      "ms": 11.399999618530273,
+      "min": 11.199999809265137,
+      "max": 11.600000381469727,
+      "pixels": 4223
+    },
+    {
+      "axis": "length",
+      "algorithm": "step",
+      "count": 100000,
+      "length": 64,
+      "ms": 14.099999904632568,
+      "min": 13.900000095367432,
+      "max": 14.300000190734863,
+      "pixels": 16403
+    },
+    {
+      "axis": "length",
+      "algorithm": "dda",
+      "count": 100000,
+      "length": 64,
+      "ms": 12.299999713897705,
+      "min": 12.199999809265137,
+      "max": 12.300000190734863,
+      "pixels": 16403
+    },
+    {
+      "axis": "length",
+      "algorithm": "bresenham",
+      "count": 100000,
+      "length": 64,
+      "ms": 15.300000190734863,
+      "min": 15.199999809265137,
+      "max": 15.5,
+      "pixels": 16400
+    },
+    {
+      "axis": "length",
+      "algorithm": "step",
+      "count": 100000,
+      "length": 126,
+      "ms": 22.699999809265137,
+      "min": 22.5,
+      "max": 22.700000286102295,
+      "pixels": 62923
+    },
+    {
+      "axis": "length",
+      "algorithm": "dda",
+      "count": 100000,
+      "length": 126,
+      "ms": 19.699999809265137,
+      "min": 19.5,
+      "max": 19.700000286102295,
+      "pixels": 62924
+    },
+    {
+      "axis": "length",
+      "algorithm": "bresenham",
+      "count": 100000,
+      "length": 126,
+      "ms": 23.90000009536743,
+      "min": 23.799999713897705,
+      "max": 24.59999990463257,
+      "pixels": 62921
+    },
+    {
+      "axis": "count",
+      "algorithm": "circle",
+      "count": 1000,
+      "length": 110,
+      "ms": 5.700000286102295,
+      "min": 5.699999809265137,
+      "max": 6,
+      "pixels": 44668
+    },
+    {
+      "axis": "count",
+      "algorithm": "circle",
+      "count": 10000,
+      "length": 110,
+      "ms": 57.90000009536743,
+      "min": 57.40000009536743,
+      "max": 57.90000009536743,
+      "pixels": 46762
+    },
+    {
+      "axis": "count",
+      "algorithm": "circle",
+      "count": 25000,
+      "length": 110,
+      "ms": 142.89999961853027,
+      "min": 140.7000002861023,
+      "max": 146.40000009536743,
+      "pixels": 47447
+    },
+    {
+      "axis": "count",
+      "algorithm": "circle",
+      "count": 50000,
+      "length": 110,
+      "ms": 291.7999997138977,
+      "min": 291.30000019073486,
+      "max": 294.5,
+      "pixels": 47495
+    }
+  ]
+}

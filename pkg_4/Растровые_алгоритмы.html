@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Растровые алгоритмы</title><style>:root{font-family:system-ui,-apple-system,sans-serif;color:#193f40;background:#e3efec;font-size:15px}*{box-sizing:border-box}body{margin:0}main{max-width:1480px;margin:auto;padding:40px 32px}header{padding:12px 0 26px}h1{font-size:clamp(30px,4vw,48px);letter-spacing:-1.6px;margin:10px 0}h2{font-size:21px;margin:0 0 16px}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:2px;color:#548078;font-weight:700}p{line-height:1.65}header>p:last-child{color:#597773}.workspace{display:grid;grid-template-columns:285px minmax(0,1fr);gap:20px}.panel,aside{background:#f9fcfa;border:1px solid #c6dcd5;border-radius:18px;padding:24px;min-width:0}section.panel{margin-bottom:20px}aside{align-self:start}label{display:block;font-size:12px;color:#56746c;margin-bottom:15px}input,select,button{font:inherit}input[type=number],select{width:100%;margin-top:7px;border:1px solid #bbd2ca;border-radius:8px;background:white;color:#214c46;padding:10px}input[type=range]{width:100%;accent-color:#257b68}.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}button{cursor:pointer;border:0;border-radius:9px;padding:12px 16px;background:#1b6357;color:white;font-weight:600}button:hover{filter:brightness(1.1)}button:disabled{opacity:.5;cursor:default}.secondary{background:#e3eee9;color:#286153}aside button{width:100%;margin:0 0 12px}output{float:right}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}#viewport{position:relative;height:520px;overflow:hidden;border-radius:10px;border:1px solid #d5e3dd;touch-action:none;cursor:grab}canvas{display:block;width:100%;height:100%}#labels{position:absolute;inset:0;pointer-events:none;font:11px ui-monospace,monospace}#labels span{position:absolute;background:#f9fcfadd;color:#45685f;padding:1px 2px}.hint,#pointer{font-size:12px;color:#688177}#status{font-size:12px;color:#a34b28}.table-scroll{overflow:auto;max-height:310px}table{width:100%;border-collapse:collapse;font-size:13px;text-align:left}th,td{padding:10px;border-bottom:1px solid #dbe7df}th{position:sticky;top:0;background:#e8f2ed}summary{cursor:pointer;font-weight:600;padding:10px 0}progress{width:100%;height:9px;accent-color:#218676;margin-top:20px}#charts{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:20px 0}.chart{padding:18px;background:#eef5f1;border-radius:12px}.chart svg{width:100%;height:auto}.chart p{font-size:12px;margin:4px 0}.legend{display:flex;flex-wrap:wrap;gap:9px;font-size:11px}#json{margin-bottom:18px}@media(max-width:850px){main{padding:22px 14px}.workspace{grid-template-columns:1fr}aside{display:block}#viewport{height:430px}#charts{grid-template-columns:1fr}.panel,aside{padding:18px}.workspace aside{margin-bottom:20px}}
+</style></head>
+<body><main><header><p class="eyebrow">Компьютерная графика · Лабораторная №4</p><h1>От формулы к пикселю</h1><p>Исследуйте, как отрезки и кривые превращаются в дискретный растр.</p></header>
+<div class="workspace"><aside><h2>Построение</h2><label>Алгоритм<select id="algorithm"><option value="bresenham">Брезенхем · отрезок</option><option value="step">Пошаговый</option><option value="dda">ЦДА</option><option value="circle">Брезенхем · окружность</option><option value="wu">Ву · сглаживание</option><option value="castle">Кастл—Питвей · отрезок</option><option value="ellipse">Целочисленный эллипс / дуга</option></select></label>
+<div class="fields"><label>X₀ / центр X<input id="x0" type="number" min="-100" max="100" value="-12" step="1"></label><label>Y₀ / центр Y<input id="y0" type="number" min="-100" max="100" value="-6" step="1"></label><label>X₁<input id="x1" type="number" min="-100" max="100" value="14" step="1"></label><label>Y₁<input id="y1" type="number" min="-100" max="100" value="9" step="1"></label><label>Радиус / полуось A<input id="radius" type="number" min="0" max="100" value="14" step="1"></label><label>Полуось B<input id="b" type="number" min="0" max="100" value="8" step="1"></label><label>Начало дуги, °<input id="start" type="number" min="0" max="359" value="0" step="1"></label><label>Размах, °<input id="sweep" type="number" min="1" max="360" value="360" step="1"></label></div>
+<button id="draw">Построить</button><button id="fit" class="secondary">Вписать в окно</button><label>Масштаб <output id="zoomValue">16 px</output><input id="zoom" type="range" min="2" max="32" value="16"></label><label>Показать шаги <output id="stepValue"></output><input id="step" type="range" min="0" max="1" value="1"></label><button id="play" class="secondary">▶ По шагам</button><button id="save" class="secondary">Сохранить PNG</button><p id="status" role="status"></p></aside>
+<section class="panel"><div class="panel-head"><h2>Виртуальная сетка</h2><span id="pixelCount"></span></div><div id="viewport"><canvas id="grid" aria-label="Растр с координатными осями"></canvas><div id="labels"></div></div><p id="pointer">Наведите курсор на ячейку, чтобы увидеть координаты и интенсивность.</p><p class="hint">Целочисленная координата — центр ячейки. X направлена вправо, Y — вверх. Колесо меняет масштаб, перетаскивание перемещает сетку.</p></section></div>
+<section class="panel explanation"><h2>Как получается растр</h2><p id="explanation"></p><details><summary>Последовательность записи пикселей</summary><p>Повторные записи симметричных точек показаны отдельно. Для совпадающих ячеек сохраняется максимальная интенсивность.</p><div class="table-scroll"><table><thead><tr><th>Шаг</th><th>X</th><th>Y</th><th>Интенсивность</th></tr></thead><tbody id="trace"></tbody></table></div></details></section>
+<section class="panel"><div class="panel-head"><div><p class="eyebrow">Производительность</p><h2>100 000 отрезков. 50 000 окружностей.</h2></div><button id="bench">Запустить бенчмарк</button><button id="stop" class="secondary" disabled>Остановить</button></div><p>Одинаковый набор во всех восьми октантах, три повтора, медиана. Измеряется заполнение массива без UI, генерации входных данных и очистки.</p><progress id="progress" value="0" max="36"></progress><p id="benchStatus" role="status">Замеры ещё не выполнялись на этом устройстве.</p><div id="charts"></div><button id="json" class="secondary" disabled>Скачать результаты JSON</button><div class="table-scroll"><table><thead><tr><th>Алгоритм</th><th>Набор</th><th>Количество</th><th>Длина ≤</th><th>Медиана, мс</th><th>Мин–макс, мс</th></tr></thead><tbody id="results"></tbody></table></div></section></main>
+<script>class VirtualGrid {
+  constructor(width=257,height=257) { this.width=width; this.height=height; this.cx=Math.floor(width/2); this.cy=Math.floor(height/2); this.rows=Array.from({length:height},()=>new Float64Array(width)); }
+  setPixel(x,y,intensity=1) { const col=x+this.cx,row=this.cy-y; if(col>=0&&col<this.width&&row>=0&&row<this.height) this.rows[row][col]=Math.max(this.rows[row][col],Math.min(1,Math.max(0,intensity))); }
+  clear() { for(const row of this.rows) row.fill(0); }
+  get(x,y) { return this.rows[this.cy-y]?.[x+this.cx]??0; }
+  count() { let n=0; for(const row of this.rows) for(const v of row) if(v>0)n++; return n; }
+}
+if(typeof module!=='undefined')module.exports=VirtualGrid;
+</script><script>const RasterEngine={
+  step(x0,y0,x1,y1,t) {
+    const dx=x1-x0,dy=y1-y0,n=Math.max(Math.abs(dx),Math.abs(dy));
+    if(!n){t.setPixel(x0,y0,1);return;}
+    if(Math.abs(dx)>=Math.abs(dy))for(let i=0;i<=n;i++){const x=x0+i*Math.sign(dx);t.setPixel(x,Math.round(y0+dy*(x-x0)/dx),1);}
+    else for(let i=0;i<=n;i++){const y=y0+i*Math.sign(dy);t.setPixel(Math.round(x0+dx*(y-y0)/dy),y,1);}
+  },
+  dda(x0,y0,x1,y1,t) {
+    const n=Math.max(Math.abs(x1-x0),Math.abs(y1-y0));
+    if(!n){t.setPixel(x0,y0,1);return;}
+    const dx=(x1-x0)/n,dy=(y1-y0)/n;let x=x0,y=y0;
+    for(let i=0;i<=n;i++,x+=dx,y+=dy)t.setPixel(Math.round(x),Math.round(y),1);
+  },
+  bresenham(x0,y0,x1,y1,t) {
+    const dx=Math.abs(x1-x0),dy=Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1;
+    if(dx>=dy){let e=2*dy-dx;for(let i=0;i<=dx;i++){t.setPixel(x0,y0,1);if(e>=0){y0+=sy;e-=2*dx;}e+=2*dy;x0+=sx;}}
+    else{let e=2*dx-dy;for(let i=0;i<=dy;i++){t.setPixel(x0,y0,1);if(e>=0){x0+=sx;e-=2*dy;}e+=2*dx;y0+=sy;}}
+  },
+  circle(cx,cy,r,t) {
+    let x=0,y=r,d=3-2*r;
+    while(x<=y){for(const [a,b] of [[x,y],[y,x],[-x,y],[-y,x],[x,-y],[y,-x],[-x,-y],[-y,-x]])t.setPixel(cx+a,cy+b,1);if(d<0)d+=4*x+6;else{d+=4*(x-y)+10;y--;}x++;}
+  },
+  wu(x0,y0,x1,y1,t) {
+    if(x0===x1&&y0===y1){t.setPixel(x0,y0,1);return;}
+    const steep=Math.abs(y1-y0)>Math.abs(x1-x0);
+    if(steep){[x0,y0]=[y0,x0];[x1,y1]=[y1,x1];}if(x0>x1){[x0,x1]=[x1,x0];[y0,y1]=[y1,y0];}
+    const g=(y1-y0)/(x1-x0),f=v=>v-Math.floor(v),put=(x,y,a)=>steep?t.setPixel(y,x,a):t.setPixel(x,y,a);
+    function end(x,y,gap){const b=Math.floor(y);put(x,b,(1-f(y))*gap);put(x,b+1,f(y)*gap);}
+    end(x0,y0,.5);end(x1,y1,.5);let y=y0+g;
+    for(let x=x0+1;x<x1;x++,y+=g)end(x,y,1);
+  },
+  castle(x0,y0,x1,y1,t) {
+    const dx=Math.abs(x1-x0),dy=Math.abs(y1-y0),steep=dy>dx,N=Math.max(dx,dy),M=Math.min(dx,dy),sx=Math.sign(x1-x0),sy=Math.sign(y1-y0);
+    if(!N){t.setPixel(x0,y0,1);return;}
+    let word;
+    if(M===0)word='0'.repeat(N);else if(M===N)word='1'.repeat(N);else{
+      let a=N-M,b=M,u='0',v='1';
+      while(a!==b){if(a>b){a-=b;v=u+v;}else{b-=a;u=u+v;}}
+      word=(u+v).repeat(a);
+      const phase=Math.floor(N/(2*a))*a;let shift=0;while((shift*M)%N!==phase)shift++;word=word.slice(shift)+word.slice(0,shift);
+    }
+    let x=x0,y=y0;t.setPixel(x,y,1);
+    for(const ch of word){if(steep){y+=sy;if(ch==='1')x+=sx;}else{x+=sx;if(ch==='1')y+=sy;}t.setPixel(x,y,1);}
+  },
+  ellipse(cx,cy,a,b,t,start=0,sweep=360) {
+    const emit=(x,y)=>{
+      if(sweep<360){const angle=(Math.atan2(y,x)*180/Math.PI+360)%360;if((angle-start+360)%360>sweep+1e-9)return;}
+      t.setPixel(cx+x,cy+y,1);
+    };
+    if(!a||!b){const target={setPixel:(x,y)=>emit(x-cx,y-cy)};this.bresenham(cx-a,cy-b,cx+a,cy+b,target);return;}
+    let x=0,y=b,aa=a*a,bb=b*b,dx=0,dy=2*aa*y,d=4*bb-4*aa*b+aa;
+    const plot=()=>{emit(x,y);emit(-x,y);emit(x,-y);emit(-x,-y);};
+    while(dx<dy){plot();x++;dx+=2*bb;if(d<0)d+=4*dx+4*bb;else{y--;dy-=2*aa;d+=4*dx-4*dy+4*bb;}}
+    d=bb*(2*x+1)**2+4*aa*(y-1)**2-4*aa*bb;
+    while(y>=0){plot();y--;dy-=2*aa;if(d>0)d+=4*aa-4*dy;else{x++;dx+=2*bb;d+=4*dx-4*dy+4*aa;}}
+    while(x<a){x++;emit(x,0);emit(-x,0);}
+  }
+};
+if(typeof module!=='undefined')module.exports=RasterEngine;
+</script><script>const Benchmark={
+  async run(progress=()=>{},cancelled=()=>false){
+    const grid=new VirtualGrid(257,257);let seed=20261020;
+    const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+    const lines=[];for(let i=0;i<100000;i++){let x=1+Math.floor(random()*126),y=1+Math.floor(random()*x);switch(i%8){case 1:[x,y]=[y,x];break;case 2:[x,y]=[-y,x];break;case 3:x=-x;break;case 4:x=-x;y=-y;break;case 5:[x,y]=[-y,-x];break;case 6:[x,y]=[y,-x];break;case 7:y=-y;}lines.push([0,0,x,y]);}
+    const circles=Array.from({length:50000},()=>[Math.floor(random()*21)-10,Math.floor(random()*21)-10,1+Math.floor(random()*110)]);
+    const rows=[],tasks=[];
+    for(const n of [1000,10000,50000,100000])for(const name of ['step','dda','bresenham','wu','castle'])tasks.push({axis:'count',name,n,length:126,data:lines});
+    for(const length of [8,32,64,126]){const data=lines.map(p=>[0,0,Math.round(p[2]*length/126),Math.round(p[3]*length/126)]);for(const name of ['step','dda','bresenham'])tasks.push({axis:'length',name,n:100000,length,data});}
+    for(const n of [1000,10000,25000,50000])tasks.push({axis:'count',name:'circle',n,length:110,data:circles});
+    for(let k=0;k<tasks.length;k++){
+      if(cancelled())throw new Error('Остановлено');const task=tasks[k],fn=RasterEngine[task.name];
+      for(let i=0;i<1000;i++)fn(...task.data[i],grid);
+      const times=[];for(let repeat=0;repeat<3;repeat++){grid.clear();const begin=performance.now();for(let i=0;i<task.n;i++)fn(...task.data[i],grid);times.push(performance.now()-begin);}
+      times.sort((a,b)=>a-b);rows.push({axis:task.axis,algorithm:task.name,count:task.n,length:task.length,ms:times[1],min:times[0],max:times[2],pixels:grid.count()});progress({done:k+1,total:tasks.length,rows});await new Promise(resolve=>setTimeout(resolve,0));
+    }
+    return {date:new Date().toISOString(),seed:20261020,repetitions:3,grid:'257 × 257',environment:typeof navigator==='undefined'?process.version:navigator.userAgent,rows};
+  }
+};
+if(typeof module!=='undefined')module.exports=Benchmark;
+</script><script>class GridPainter {
+  constructor(canvas,labels){this.canvas=canvas;this.labels=labels;this.zoom=16;this.panX=0;this.panY=0;}
+  render(grid){
+    const c=this.canvas,w=c.clientWidth,h=c.clientHeight;if(w<1||h<1)return;c.width=Math.round(w);c.height=Math.round(h);const image=new ImageData(c.width,c.height),z=this.zoom,ox=w/2+this.panX,oy=h/2+this.panY;
+    for(let py=0;py<c.height;py++)for(let px=0;px<c.width;px++){
+      const x=Math.floor((px-ox)/z+.5),y=Math.floor((oy-py)/z+.5),a=grid.get(x,y),i=(py*c.width+px)*4;
+      let color=[248,252,249];if(a>0)color=color.map((v,k)=>Math.round(v*(1-a)+[26,119,99][k]*a));
+      const vx=((px-ox+z/2)%z+z)%z,vy=((py-oy+z/2)%z+z)%z;
+      if(z>=5&&(vx<1||vy<1))color=[206,224,215];if(Math.abs(px-ox)<.65||Math.abs(py-oy)<.65)color=[107,149,133];
+      image.data[i]=color[0];image.data[i+1]=color[1];image.data[i+2]=color[2];image.data[i+3]=255;
+    }
+    c.getContext('2d').putImageData(image,0,0);this.labels.replaceChildren();const every=Math.max(1,Math.ceil(45/z));
+    const label=(text,x,y)=>{const s=document.createElement('span');s.textContent=text;s.style.left=x+'px';s.style.top=y+'px';this.labels.append(s);};
+    for(let x=Math.ceil(-ox/z/every)*every;x<(w-ox)/z;x+=every)label(x,ox+x*z+2,Math.max(0,Math.min(h-18,oy+4)));
+    for(let y=Math.ceil((oy-h)/z/every)*every;y<oy/z;y+=every)if(y)label(y,Math.max(0,Math.min(w-35,ox+5)),oy-y*z-8);
+    label('X →',w-35,Math.max(0,Math.min(h-18,oy+22)));label('Y ↑',Math.max(0,Math.min(w-35,ox+5)),3);
+  }
+  coordinate(event){const rect=this.canvas.getBoundingClientRect();return [Math.round((event.clientX-rect.left-this.canvas.clientWidth/2-this.panX)/this.zoom),Math.round((this.canvas.clientHeight/2+this.panY-event.clientY+rect.top)/this.zoom)];}
+}
+</script><script>const View={
+  names:{step:'Пошаговый',dda:'ЦДА',bresenham:'Брезенхем',circle:'Окружность',wu:'Ву',castle:'Кастл—Питвей',ellipse:'Эллипс / дуга'},
+  explanations:{step:'Ведущая координата изменяется на единицу, вторая вычисляется по уравнению прямой и округляется. Выбор ведущей оси позволяет обрабатывать крутые отрезки.',dda:'ЦДА: N = max(|Δx|, |Δy|), приращения Δx/N и Δy/N. На каждом шаге вещественные координаты суммируются и округляются до центров ячеек.',bresenham:'Брезенхем: ведущая ось изменяется на каждом шаге. Для N = max(|Δx|, |Δy|), M = min(|Δx|, |Δy|) ошибка e = 2M − N. Если e ≥ 0, делается шаг по малой оси и e уменьшается на 2N; затем e += 2M. Знаки приращений обеспечивают все восемь октантов.',circle:'Окружность: x = 0, y = r, d = 3 − 2r. Если d < 0, d += 4x + 6; иначе d += 4(x − y) + 10 и y уменьшается. Восемь симметричных точек формируют полную окружность.',wu:'Ву: дробная часть пересечения с колонкой задаёт веса двух соседних пикселей: 1 − f и f. Концы целочисленного отрезка имеют половинное покрытие; нулевой отрезок — одну полную ячейку.',castle:'Кастл—Питвей: алгоритм Евклида объединяет слова горизонтальных и диагональных шагов. Циклический сдвиг слова центрирует цепочку; отклонение по малой оси не превышает половины ячейки. Это структурный алгоритм отрезка.',ellipse:'Целочисленная midpoint-схема для коники b²x² + a²y² − a²b² = 0: ошибка умножена на 4, чтобы исключить дроби. Две области обхода соединяются в точке смены ведущей оси. Для дуги отбираются точки по полярному углу против часовой стрелки.'},
+  charts(rows){const host=document.getElementById('charts');host.replaceChildren();for(const axis of ['count','length']){const list=rows.filter(r=>r.axis===axis),box=document.createElement('div');box.className='chart';box.innerHTML=`<h3>${axis==='count'?'Время и количество':'Время и длина'}</h3>`;if(!list.length){host.append(box);continue;}const maxX=Math.max(...list.map(r=>axis==='count'?r.count:r.length)),maxY=Math.max(1,...list.map(r=>r.ms))*1.1,colors=['#197b69','#d38443','#506ca8','#a24d7b','#6e8e39','#79624e'];let svg='<svg viewBox="0 0 520 280" role="img" aria-label="График времени заполнения растра"><path d="M55 15V235H500" fill="none" stroke="#829d91"/>';
+      for(let i=0;i<=4;i++){const y=235-i*53;svg+=`<path d="M55 ${y}H500" stroke="#d2e0d7"/><text x="3" y="${y+4}" font-size="11">${(maxY*i/4).toFixed(1)}</text>`;const x=55+i*111;svg+=`<text x="${x}" y="253" font-size="11" text-anchor="middle">${Math.round(maxX*i/4)}</text>`;}
+      let legend='';[...new Set(list.map(r=>r.algorithm))].forEach((name,i)=>{const data=list.filter(r=>r.algorithm===name).sort((a,b)=>(axis==='count'?a.count-b.count:a.length-b.length)),points=data.map(r=>`${55+445*(axis==='count'?r.count:r.length)/maxX},${235-212*r.ms/maxY}`).join(' ');svg+=`<polyline points="${points}" fill="none" stroke="${colors[i]}" stroke-width="2"/>`;for(const r of data)svg+=`<circle cx="${55+445*(axis==='count'?r.count:r.length)/maxX}" cy="${235-212*r.ms/maxY}" r="3" fill="${colors[i]}"/>`;legend+=`<span style="color:${colors[i]}">● ${this.names[name]}</span>`;});svg+='<text x="55" y="12" font-size="11">мс</text></svg>';box.innerHTML+=svg+`<div class="legend">${legend}</div><p>${axis==='count'?'Количество примитивов; окружности имеют радиусы 1–110.':'Максимальная длина по ведущей оси, ячеек; 100 000 отрезков.'}</p>`;host.append(box);}},
+  results(rows){document.getElementById('results').innerHTML=rows.map(r=>`<tr><td>${this.names[r.algorithm]}</td><td>${r.axis==='count'?'Количество':'Длина'}</td><td>${r.count}</td><td>${r.length}</td><td>${r.ms.toFixed(2)}</td><td>${r.min.toFixed(2)}–${r.max.toFixed(2)}</td></tr>`).join('');this.charts(rows);}
+};
+</script><script>const Controller=(()=>{
+  const $=id=>document.getElementById(id),grid=new VirtualGrid(401,401),painter=new GridPainter($('grid'),$('labels'));let trace=[],worker=null,result=null,animation=null,drag=null;
+  const render=()=>{grid.clear();const n=Number($('step').value);for(const p of trace.slice(0,n))grid.setPixel(...p);painter.render(grid);$('pixelCount').textContent=grid.count()+' ячеек';$('stepValue').textContent=n+' / '+trace.length;};
+  const draw=()=>{clearInterval(animation);animation=null;$('play').textContent='▶ По шагам';try{const values={};for(const id of ['x0','y0','x1','y1','radius','b','start','sweep']){const el=$(id),v=Number(el.value);if(el.value===''||!Number.isInteger(v)||v<Number(el.min)||v>Number(el.max))throw Error('Проверьте целые координаты (−100…100), радиусы (0…100) и углы.');values[id]=v;}trace=[];const t={setPixel:(x,y,a=1)=>trace.push([x,y,a])},v=values,name=$('algorithm').value;
+    if(name==='circle')RasterEngine.circle(v.x0,v.y0,v.radius,t);else if(name==='ellipse')RasterEngine.ellipse(v.x0,v.y0,v.radius,v.b,t,v.start,v.sweep);else RasterEngine[name](v.x0,v.y0,v.x1,v.y1,t);
+    $('step').max=trace.length;$('step').value=trace.length;$('explanation').textContent=View.explanations[name];$('trace').innerHTML=trace.map((p,i)=>`<tr><td>${i+1}</td><td>${p[0]}</td><td>${p[1]}</td><td>${p[2].toFixed(4)}</td></tr>`).join('');$('status').textContent='';render();
+  }catch(e){$('status').textContent=e.message;}};
+  $('draw').onclick=draw;$('algorithm').onchange=draw;$('step').oninput=render;$('zoom').oninput=()=>{painter.zoom=Number($('zoom').value);$('zoomValue').textContent=painter.zoom+' px';render();};
+  $('fit').onclick=()=>{if(!trace.length)return;const xs=trace.map(p=>p[0]),ys=trace.map(p=>p[1]),a=Math.min(...xs),b=Math.max(...xs),c=Math.min(...ys),d=Math.max(...ys);painter.zoom=Math.max(2,Math.min(32,Math.floor(Math.min($('grid').clientWidth/(b-a+5),$('grid').clientHeight/(d-c+5)))));painter.panX=-(a+b)/2*painter.zoom;painter.panY=(c+d)/2*painter.zoom;$('zoom').value=painter.zoom;$('zoomValue').textContent=painter.zoom+' px';render();};
+  $('play').onclick=()=>{if(animation){clearInterval(animation);animation=null;$('play').textContent='▶ По шагам';return;}$('step').value=0;render();$('play').textContent='Пауза';animation=setInterval(()=>{$('step').value=Number($('step').value)+1;render();if(Number($('step').value)>=trace.length){clearInterval(animation);animation=null;$('play').textContent='▶ По шагам';}},70);};
+  const canvas=$('grid');canvas.onwheel=e=>{e.preventDefault();$('zoom').value=Math.max(2,Math.min(32,painter.zoom+(e.deltaY<0?1:-1)));$('zoom').oninput();};canvas.onpointerdown=e=>{canvas.setPointerCapture(e.pointerId);drag=[e.clientX,e.clientY,painter.panX,painter.panY];};canvas.onpointerup=()=>drag=null;canvas.onpointercancel=()=>drag=null;canvas.onpointermove=e=>{if(drag){painter.panX=drag[2]+e.clientX-drag[0];painter.panY=drag[3]+e.clientY-drag[1];render();}const [x,y]=painter.coordinate(e);$('pointer').textContent=`X = ${x}, Y = ${y} · интенсивность ${grid.get(x,y).toFixed(4)}`;};
+  const download=(blob,name)=>{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);};
+  $('save').onclick=()=>canvas.toBlob(blob=>{if(blob)download(blob,'raster.png');});$('json').onclick=()=>download(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}),'benchmark-results.json');
+  const finish=()=>{if(worker)worker.terminate();worker=null;$('bench').disabled=false;$('stop').disabled=true;};
+  $('bench').onclick=()=>{result=null;$('json').disabled=true;$('bench').disabled=true;$('stop').disabled=false;$('progress').value=0;$('benchStatus').textContent='Генерация входных наборов…';View.results([]);
+    const source=`${VirtualGrid.toString()}\nconst RasterEngine={${Object.entries(RasterEngine).map(([k,v])=>v.toString()).join(',')}};\nconst Benchmark={${Benchmark.run.toString()}};\nBenchmark.run(p=>postMessage({type:'progress',value:p})).then(value=>postMessage({type:'done',value})).catch(e=>postMessage({type:'error',value:e.message}));`;
+    const url=URL.createObjectURL(new Blob([source],{type:'text/javascript'}));try{worker=new Worker(url);URL.revokeObjectURL(url);worker.onmessage=e=>{const m=e.data;if(m.type==='progress'){$('progress').max=m.value.total;$('progress').value=m.value.done;$('benchStatus').textContent=`Выполнено ${m.value.done} из ${m.value.total} замеров`;View.results(m.value.rows);}else if(m.type==='done'){result=m.value;$('json').disabled=false;$('benchStatus').textContent='Готово. В таблице и графиках — замеры этого устройства.';finish();}else{$('benchStatus').textContent=m.value;finish();}};worker.onerror=e=>{$('benchStatus').textContent='Ошибка бенчмарка: '+e.message;finish();};}catch(e){URL.revokeObjectURL(url);$('benchStatus').textContent='Не удалось запустить Worker: '+e.message;finish();}};
+  $('stop').onclick=()=>{finish();$('benchStatus').textContent='Остановлено. Показаны только завершённые замеры.';};new ResizeObserver(render).observe($('viewport'));draw();return {draw,grid,painter};
+})();
+</script></body></html>

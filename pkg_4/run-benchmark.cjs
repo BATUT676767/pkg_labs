@@ -1,0 +1,1 @@
+global.VirtualGrid=require('./virtual-grid.js');global.RasterEngine=require('./raster-engine.js');const Benchmark=require('./benchmark.js'),fs=require('node:fs');Benchmark.run(p=>process.stdout.write(`${p.done}/${p.total}\n`)).then(result=>fs.writeFileSync(__dirname+'/benchmark-node-results.json',JSON.stringify(result,null,2))).catch(e=>{console.error(e);process.exitCode=1;});
