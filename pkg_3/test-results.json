@@ -1,0 +1,495 @@
+{
+  "total": 122,
+  "passed": 122,
+  "failed": [],
+  "checks": [
+    {
+      "name": "Reflect repeats boundary pixels",
+      "passed": true
+    },
+    {
+      "name": "Clamp duplicates extremes",
+      "passed": true
+    },
+    {
+      "name": "One-pixel borders",
+      "passed": true
+    },
+    {
+      "name": "Invalid buffer rejected",
+      "passed": true
+    },
+    {
+      "name": "Kernel box 0",
+      "passed": true
+    },
+    {
+      "name": "Kernel box 1",
+      "passed": true
+    },
+    {
+      "name": "Kernel box 3",
+      "passed": true
+    },
+    {
+      "name": "Kernel box 10",
+      "passed": true
+    },
+    {
+      "name": "Kernel gaussian 0",
+      "passed": true
+    },
+    {
+      "name": "Kernel gaussian 1",
+      "passed": true
+    },
+    {
+      "name": "Kernel gaussian 3",
+      "passed": true
+    },
+    {
+      "name": "Kernel gaussian 10",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x7 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 1x7 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 8x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 8x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 7x5 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 7x5 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 7x5 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian clamp 7x5 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x7 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 1x7 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 8x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 8x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 7x5 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 7x5 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 7x5 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box clamp 7x5 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x7 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 1x7 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 8x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 8x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 7x5 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 7x5 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 7x5 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference gaussian reflect 7x5 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x7 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 1x7 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 8x1 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 8x1 r8",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 7x5 r0",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 7x5 r1",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 7x5 r3",
+      "passed": true
+    },
+    {
+      "name": "2D reference box reflect 7x5 r8",
+      "passed": true
+    },
+    {
+      "name": "Flat field gaussian clamp",
+      "passed": true
+    },
+    {
+      "name": "Flat field box clamp",
+      "passed": true
+    },
+    {
+      "name": "Flat field gaussian reflect",
+      "passed": true
+    },
+    {
+      "name": "Flat field box reflect",
+      "passed": true
+    },
+    {
+      "name": "Transparent pixel does not introduce black halo",
+      "passed": true
+    },
+    {
+      "name": "Histogram skips fully transparent pixels",
+      "passed": true
+    },
+    {
+      "name": "Linear stretch endpoints and middle",
+      "passed": true
+    },
+    {
+      "name": "Equalization known CDF",
+      "passed": true
+    },
+    {
+      "name": "Constant histogram linear",
+      "passed": true
+    },
+    {
+      "name": "Constant histogram equalize",
+      "passed": true
+    },
+    {
+      "name": "HSV value mapping preserves channel ratios and alpha",
+      "passed": true
+    },
+    {
+      "name": "RGB uses separate transfer functions",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x1 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 1x7 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 8x1 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 9x6 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 9x6 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference clamp 9x6 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x1 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x1 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x1 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x7 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x7 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 1x7 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 8x1 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 8x1 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 8x1 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 9x6 r1",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 9x6 r3",
+      "passed": true
+    },
+    {
+      "name": "CLAHE independent reference reflect 9x6 r10",
+      "passed": true
+    },
+    {
+      "name": "CLAHE transparency clamp",
+      "passed": true
+    },
+    {
+      "name": "CLAHE transparency reflect",
+      "passed": true
+    },
+    {
+      "name": "CLAHE constant field unchanged",
+      "passed": true
+    },
+    {
+      "name": "Metrics for two equally probable levels",
+      "passed": true
+    },
+    {
+      "name": "Monotone LUT linear",
+      "passed": true
+    },
+    {
+      "name": "Monotone LUT equalize",
+      "passed": true
+    },
+    {
+      "name": "Strip halos match complete image smooth clamp",
+      "passed": true
+    },
+    {
+      "name": "Strip halos match complete image clahe clamp",
+      "passed": true
+    },
+    {
+      "name": "Strip halos match complete image smooth reflect",
+      "passed": true
+    },
+    {
+      "name": "Strip halos match complete image clahe reflect",
+      "passed": true
+    }
+  ]
+}

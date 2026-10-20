@@ -1,0 +1,23 @@
+{
+  "browser": "26.8.0.0",
+  "checks": [
+    "Local file launch",
+    "RGB / HSV / CLAHE",
+    "Gaussian smoothing",
+    "PNG export",
+    "Mobile layout",
+    "Thread equivalence including CLAHE",
+    "Cancellation",
+    "Standalone HTML",
+    "File import"
+  ],
+  "performance": {
+    "width": 2400,
+    "height": 1600,
+    "oneThreadMs": 238.90000009536743,
+    "fourThreadsMs": 80.40000009536743,
+    "equal": true,
+    "maxTimerGapMs": 21.800000190734863
+  },
+  "errors": []
+}

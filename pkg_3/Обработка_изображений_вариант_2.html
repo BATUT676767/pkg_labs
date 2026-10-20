@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Обработка изображений · Вариант 2</title><style>*{box-sizing:border-box}body{margin:0;background:#dcebea;color:#163e40;font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1600px;margin:auto;padding:30px 34px}h1,h2,p{margin:0}header{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:23px}h1{font-size:32px;letter-spacing:-1px;line-height:1.25}header p:not(.eyebrow){color:#5a7976;margin-top:6px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;color:#557e78}.badge{border:1px solid #a5c5bf;border-radius:30px;padding:8px 17px;background:#edf6f2;white-space:nowrap}button,input,select{font:inherit}button,select{border:1px solid #b5cfca;border-radius:8px;background:#f8fcfb;color:#163e40;padding:9px 12px}button{cursor:pointer}button:hover:not(:disabled){background:#e4f2ed;border-color:#288478}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d5a744;outline-offset:2px}.primary{background:#bee4d3;border-color:#bee4d3;font-weight:650}.source-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;background:#164b4d;color:#f4fff9;border-radius:12px;padding:18px 22px;margin-bottom:18px}.source-bar strong{display:block;font-size:16px;overflow-wrap:anywhere}.source-bar span{font-size:12px;color:#bad8ce}.actions{display:flex;gap:8px;flex-wrap:wrap}.workspace{display:grid;grid-template-columns:285px minmax(0,1fr);gap:20px;align-items:start}.settings{padding:20px;background:#f6fbf8;border:1px solid #bed4ce;border-radius:12px}.section-title{display:flex;align-items:center;gap:9px;margin-bottom:17px}.section-title span{font-size:10px;background:#dceee4;border-radius:5px;padding:4px 7px;color:#3c7664}.section-title h2{font-size:17px}.second{border-top:1px solid #dce8df;padding-top:20px;margin-top:23px}label{display:block;font-size:12px;color:#536f65;margin-bottom:15px}label select{display:block;width:100%;margin-top:6px;font-size:12px}output{float:right;color:#1f6051;font-size:11px}input[type=range]{display:block;width:100%;accent-color:#287e6b;margin:13px 0 0}label:has(input:disabled){opacity:.5}.bottom-controls{display:flex;gap:7px;align-items:end;margin-top:20px}.bottom-controls label{width:61px;margin:0}.bottom-controls button{font-size:12px;padding:9px}.hint{font-size:11px;color:#799084;margin-top:15px}.image-grid,.hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.image-card{border:1px solid #bcd3cc;background:#f8fcfa;border-radius:12px;overflow:hidden}.card-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 15px}.card-head h2{font-size:15px}.card-head span{font-size:10px;color:#6c8b7d;max-width:65%;text-align:right}.image-stage{height:300px;padding:10px;background:repeating-conic-gradient(#e3ece5 0% 25%,#eef4ee 0% 50%) 50%/20px 20px;display:flex;align-items:center;justify-content:center}.image-stage canvas{display:block;max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 2px 12px #11362518}.progress-row{display:flex;align-items:center;gap:12px;margin:14px 0 23px}.progress-row span{font-size:11px;color:#597d6e;max-width:60%}progress{flex:1;width:80px;height:6px;border:0;border-radius:8px;overflow:hidden;background:#c3d8d1}progress::-webkit-progress-bar{background:#c3d8d1}progress::-webkit-progress-value{background:#298373}progress::-moz-progress-bar{background:#298373}.hist-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.hist-head h2{font-size:17px}.hist-controls{display:flex;gap:12px;align-items:center}.hist-controls label{margin:0}.hist-controls select{display:inline-block;width:auto;margin:0 0 0 6px;padding:5px;font-size:11px}.check{white-space:nowrap;font-size:11px}.check input{accent-color:#267968;vertical-align:middle}.hist-grid article{border:1px solid #bcd3cc;background:#f8fcfa;border-radius:10px;padding:10px 14px}.hist-grid article>span{font-size:11px;color:#6a8a7b}.hist-grid canvas{display:block;width:100%;height:145px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.metrics>div{padding:12px 13px;background:#edf6f0;border:1px solid #bfd6cc;border-radius:9px}.metrics span{display:block;font-size:10px;color:#6b887a}.metrics strong{display:block;font-size:17px;font-weight:550;margin-top:4px}#notice{font-size:12px;color:#a05c36;min-height:18px;margin-top:8px}.samples{margin-top:23px;background:#eaf4ed;border:1px solid #bfd6cc;border-radius:12px;padding:18px 22px}.samples-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:13px}.samples h2{font-size:16px}.samples p{font-size:12px;color:#668071}#samples{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}#samples button{min-width:0;text-align:left;padding:7px;background:#f9fcf9;font-size:11px}#samples button.active{border-color:#1f8064;box-shadow:0 0 0 1px #1f8064}#samples canvas{display:block;width:100%;height:65px;object-fit:cover;border-radius:4px;margin-bottom:6px}#sample-description{margin-top:12px;min-height:18px}[hidden]{display:none!important}@media(min-width:1500px){.image-stage{height:330px}}@media(max-width:1100px){main{padding:25px 20px}.workspace{grid-template-columns:250px minmax(0,1fr)}.image-stage{height:240px}.metrics{grid-template-columns:1fr 1fr}.hist-head{align-items:start;flex-direction:column}.card-head{align-items:start;flex-direction:column}.card-head span{max-width:100%;text-align:left}}@media(max-width:800px){.workspace{grid-template-columns:1fr}.settings{display:grid;grid-template-columns:1fr 1fr;gap:5px 20px}.section-title,.second,.bottom-controls,.hint{grid-column:1/-1}.second{margin:6px 0 12px;padding-top:14px}.settings label{margin-bottom:12px}.bottom-controls{justify-content:end;margin-top:4px}.bottom-controls label{margin:0}.bottom-controls button{padding:10px 20px}.source-bar{align-items:start;flex-direction:column}#samples{grid-template-columns:repeat(4,1fr)}.samples-head{align-items:start;flex-direction:column;gap:3px}}@media(max-width:480px){main{padding:20px 12px}h1{font-size:25px}.eyebrow{font-size:9px;letter-spacing:1px}.badge{padding:6px 10px;font-size:11px}.image-grid{grid-template-columns:1fr}.image-stage{height:230px}.hist-grid{gap:8px}.hist-grid article{padding:8px}.hist-controls{gap:6px;flex-wrap:wrap}.metrics strong{font-size:16px}#samples{grid-template-columns:repeat(2,1fr)}.samples{padding:15px}.actions button{font-size:12px;padding:8px}.settings{padding:16px;gap:5px 12px}}
+
+@media(max-width:480px){.hist-grid{grid-template-columns:1fr}}
+</style></head>
+<body><main>
+<header><div><p class="eyebrow">Компьютерная графика · Лабораторная №3</p><h1>Обработка изображений</h1><p>Сглаживание, контраст и гистограммы</p></div><span class="badge">Вариант 2</span></header>
+<section class="source-bar"><div><strong id="source-name">Малый контраст</strong><span id="source-size">640 × 400 px</span></div><div class="actions"><button id="open" class="primary">Открыть изображение</button><button id="save" disabled>Сохранить PNG ↓</button><button id="reset">Сбросить</button><input id="file" type="file" accept="image/*" hidden></div></section>
+<div class="workspace"><aside class="settings">
+<div class="section-title"><span>01</span><h2>Сглаживание</h2></div>
+<label>Фильтр<select id="filter"><option value="none">Без сглаживания</option><option value="gaussian">Гаусс</option><option value="box">Бокс-фильтр</option></select></label>
+<label>Радиус <output id="radius-value">2 · окно 5 × 5</output><input id="radius" type="range" min="0" max="20" value="2"></label>
+<label>Сигма Гаусса <output id="sigma-value">1,4</output><input id="sigma" type="range" min="0.2" max="10" step="0.1" value="1.4"></label>
+<label>Границы изображения<select id="edge"><option value="reflect">Reflect — отражение</option><option value="clamp">Clamp — крайний пиксель</option></select></label>
+<div class="section-title second"><span>02</span><h2>Контраст</h2></div>
+<label>Преобразование<select id="contrast"><option value="linear">Линейное растяжение V</option><option value="rgb">Эквализация RGB</option><option value="hsv">Эквализация V в HSV</option><option value="clahe">CLAHE · локальная яркость V</option><option value="none">Без преобразования</option></select></label>
+<div id="clahe-settings" hidden><label>Радиус окна CLAHE <output id="clahe-radius-value">16 · окно 33 × 33</output><input id="clahe-radius" type="range" min="1" max="48" value="16"></label><label>Ограничение контраста <output id="clip-value">2</output><input id="clip" type="range" min="1" max="8" step="0.1" value="2"></label></div>
+<div class="bottom-controls"><label>Потоки<select id="threads"><option>1</option><option>2</option><option selected>4</option><option>8</option></select></label><button id="apply" class="primary">Применить →</button><button id="cancel" disabled>Стоп</button></div><p class="hint">Сначала сглаживание, затем контраст. Каждый запуск — от исходного изображения.</p>
+</aside><section class="results">
+<div class="image-grid"><article class="image-card"><div class="card-head"><h2>Исходное</h2><span>До обработки</span></div><div class="image-stage"><canvas id="before" aria-label="Исходное изображение"></canvas></div></article><article class="image-card"><div class="card-head"><h2>Результат</h2><span id="result-label">Линейное растяжение V</span></div><div class="image-stage"><canvas id="after" aria-label="Обработанное изображение"></canvas></div></article></div>
+<div class="progress-row"><progress id="progress" max="1" value="0" aria-label="Прогресс обработки"></progress><span id="progress-text" role="status">Готово к обработке</span></div>
+<div class="hist-head"><h2>Гистограммы</h2><div class="hist-controls"><label>Канал<select id="channel"><option value="4">Яркость Y′</option><option value="3">Значение V (HSV)</option><option value="0">Красный R</option><option value="1">Зелёный G</option><option value="2">Синий B</option><option value="rgb">RGB вместе</option></select></label><label class="check"><input id="log" type="checkbox"> Лог. шкала</label></div></div>
+<div class="hist-grid"><article><span>До</span><canvas id="hist-before" width="600" height="190" aria-label="Гистограмма исходного изображения"></canvas></article><article><span>После</span><canvas id="hist-after" width="600" height="190" aria-label="Гистограмма результата"></canvas></article></div>
+<div class="metrics"><div><span>Средняя яркость</span><strong id="mean">—</strong></div><div><span>Стандартное отклонение</span><strong id="std">—</strong></div><div><span>Энтропия, бит</span><strong id="entropy">—</strong></div><div><span>Время обработки</span><strong id="elapsed">—</strong></div></div>
+<p id="notice" role="status" aria-live="polite"></p>
+</section></div>
+<section class="samples"><div class="samples-head"><h2>Тестовые изображения</h2><p>Выберите пример, чтобы сравнить методы</p></div><div id="samples"></div><p id="sample-description"></p></section>
+</main><script>function installPixelBuffer() {
+  class PixelBuffer {
+    constructor(width,height,data) {
+      if(!Number.isInteger(width)||!Number.isInteger(height)||width<1||height<1||!data||data.length!==width*height*4)throw new Error('Некорректный пиксельный буфер');
+      this.width=width;this.height=height;this.data=data;
+    }
+    static edge(index,length,mode='reflect') {
+      if(length===1)return 0;
+      if(mode==='clamp')return Math.min(length-1,Math.max(0,index));
+      if(mode!=='reflect')throw new Error('Неизвестный режим границы');
+      const period=2*length;
+      index=((index%period)+period)%period;
+      return index<length?index:period-index-1;
+    }
+    offset(x,y,mode){return (PixelBuffer.edge(y,this.height,mode)*this.width+PixelBuffer.edge(x,this.width,mode))*4;}
+    crop(start,rows){return new PixelBuffer(this.width,rows,this.data.slice(start*this.width*4,(start+rows)*this.width*4));}
+  }
+  globalThis.PixelBuffer=PixelBuffer;
+}
+installPixelBuffer();
+if(typeof module!=='undefined')module.exports={PixelBuffer,installPixelBuffer};
+</script><script>function installImageModel() {
+  const byte=x=>Math.min(255,Math.max(0,Math.round(x)));
+  const validate=(n,lo,hi,name)=>{if(!Number.isFinite(n)||n<lo||n>hi)throw new Error(`Некорректный параметр: ${name}`);};
+  function histogram(image) {
+    const h=Array.from({length:5},()=>new Uint32Array(256));const a=image.data;
+    for(let i=0;i<a.length;i+=4){if(!a[i+3])continue;h[0][a[i]]++;h[1][a[i+1]]++;h[2][a[i+2]]++;h[3][Math.max(a[i],a[i+1],a[i+2])]++;h[4][byte(.2126*a[i]+.7152*a[i+1]+.0722*a[i+2])]++;}
+    return h;
+  }
+  function metrics(h) {
+    let count=0,sum=0,squares=0,entropy=0,min=255,max=0;
+    for(let i=0;i<256;i++){count+=h[i];sum+=i*h[i];squares+=i*i*h[i];if(h[i]){min=Math.min(min,i);max=i;}}
+    if(!count)return {count:0,mean:0,std:0,entropy:0,min:0,max:0};
+    for(const n of h)if(n){const p=n/count;entropy-=p*Math.log2(p);}
+    return {count,mean:sum/count,std:Math.sqrt(Math.max(0,squares/count-(sum/count)**2)),entropy,min,max};
+  }
+  function kernel(kind,radius,sigma=1.5) {
+    validate(radius,0,30,'радиус');validate(sigma,.1,30,'σ');if(!Number.isInteger(radius))throw new Error('Радиус должен быть целым');
+    if(!['gaussian','box'].includes(kind))throw new Error('Неизвестный фильтр');
+    const k=new Float64Array(radius*2+1);let sum=0;
+    for(let i=-radius;i<=radius;i++){const value=kind==='box'?1:Math.exp(-i*i/(2*sigma*sigma));k[i+radius]=value;sum+=value;}
+    return k.map(x=>x/sum);
+  }
+  function smooth(image,options,progress=()=>{}) {
+    const {width:w,height:h,data:a}=image,{radius:r,edge,filter,sigma}=options,k=kernel(filter,r,sigma);
+    const temp=new Float32Array(a.length),out=new Uint8ClampedArray(a.length),xs=new Int32Array(w*k.length),ys=new Int32Array(h*k.length);
+    for(let x=0;x<w;x++)for(let j=0;j<k.length;j++)xs[x*k.length+j]=PixelBuffer.edge(x+j-r,w,edge);
+    for(let y=0;y<h;y++)for(let j=0;j<k.length;j++)ys[y*k.length+j]=PixelBuffer.edge(y+j-r,h,edge);
+    for(let y=0;y<h;y++){
+      for(let x=0;x<w;x++){const p=(y*w+x)*4;let red=0,green=0,blue=0,alpha=0;
+        for(let j=0;j<k.length;j++){const q=(y*w+xs[x*k.length+j])*4,weight=k[j],wa=weight*a[q+3]/255;red+=a[q]*wa;green+=a[q+1]*wa;blue+=a[q+2]*wa;alpha+=a[q+3]*weight;}
+        temp[p]=red;temp[p+1]=green;temp[p+2]=blue;temp[p+3]=alpha;
+      }
+      if(y%16===0)progress(y/(2*h));
+    }
+    for(let y=0;y<h;y++){
+      for(let x=0;x<w;x++){const p=(y*w+x)*4;let red=0,green=0,blue=0,alpha=0;
+        for(let j=0;j<k.length;j++){const q=(ys[y*k.length+j]*w+x)*4,weight=k[j];red+=temp[q]*weight;green+=temp[q+1]*weight;blue+=temp[q+2]*weight;alpha+=temp[q+3]*weight;}
+        out[p+3]=byte(alpha);if(alpha>1e-8){out[p]=byte(red*255/alpha);out[p+1]=byte(green*255/alpha);out[p+2]=byte(blue*255/alpha);}
+      }
+      if(y%16===0)progress(.5+y/(2*h));
+    }
+    progress(1);return new PixelBuffer(w,h,out);
+  }
+  function lut(hist,kind) {
+    const values=Uint8Array.from({length:256},(_,i)=>i),m=metrics(hist);
+    if(!m.count||m.min===m.max)return values;
+    if(kind==='linear'){for(let i=0;i<256;i++)values[i]=byte((i-m.min)*255/(m.max-m.min));return values;}
+    let cdf=0;const first=hist[m.min];
+    for(let i=0;i<256;i++){cdf+=hist[i];values[i]=byte((cdf-first)*255/(m.count-first));}
+    return values;
+  }
+  function transform(image,method,tables,progress=()=>{}) {
+    const out=image.data.slice(),a=image.data;
+    for(let y=0;y<image.height;y++){
+      for(let x=0;x<image.width;x++){const p=(y*image.width+x)*4;if(!a[p+3])continue;
+        if(method==='rgb'){for(let c=0;c<3;c++)out[p+c]=tables[c][a[p+c]];}
+        else {const v=Math.max(a[p],a[p+1],a[p+2]),next=tables[0][v];for(let c=0;c<3;c++)out[p+c]=v?byte(a[p+c]*next/v):next;}
+      }
+      if(y%32===0)progress(y/image.height);
+    }
+    progress(1);return new PixelBuffer(image.width,image.height,out);
+  }
+  function clippedValue(hist,total,value,clipLimit) {
+    if(!total)return value;
+    let bins=0;for(let i=0;i<256;i++)if(hist[i])bins++;
+    if(bins<=1)return value;
+    const limit=Math.max(1,Math.floor(clipLimit*total/256));let excess=0,cdf=0;
+    for(let i=0;i<256;i++){const n=Math.min(hist[i],limit);excess+=hist[i]-n;if(i<=value)cdf+=n;}
+    const base=Math.floor(excess/256),remainder=excess%256;
+    cdf+=base*(value+1);
+    for(let j=0;j<remainder;j++)if(Math.floor((j+.5)*256/remainder)<=value)cdf++;
+    return byte(255*cdf/total);
+  }
+  function clahe(image,options,progress=()=>{}) {
+    const {width:w,height:h,data:a}=image,r=options.claheRadius,edge=options.edge,clip=options.clipLimit;
+    validate(r,1,64,'радиус CLAHE');validate(clip,1,16,'ограничение контраста');if(!Number.isInteger(r))throw new Error('Радиус должен быть целым');
+    const out=a.slice(),columns=new Int32Array(w*256),counts=new Int32Array(w),hist=new Int32Array(256);
+    function changeRow(y,delta){y=PixelBuffer.edge(y,h,edge);for(let x=0;x<w;x++){const p=(y*w+x)*4;if(a[p+3]){columns[x*256+Math.max(a[p],a[p+1],a[p+2])]+=delta;counts[x]+=delta;}}}
+    for(let y=-r;y<=r;y++)changeRow(y,1);
+    for(let y=0;y<h;y++){
+      hist.fill(0);let total=0;
+      for(let x=-r;x<=r;x++){const xx=PixelBuffer.edge(x,w,edge);total+=counts[xx];for(let i=0;i<256;i++)hist[i]+=columns[xx*256+i];}
+      for(let x=0;x<w;x++){
+        const p=(y*w+x)*4;
+        if(a[p+3]){const v=Math.max(a[p],a[p+1],a[p+2]),next=clippedValue(hist,total,v,clip);for(let c=0;c<3;c++)out[p+c]=v?byte(a[p+c]*next/v):next;}
+        if(x<w-1){const left=PixelBuffer.edge(x-r,w,edge),right=PixelBuffer.edge(x+r+1,w,edge);total+=counts[right]-counts[left];for(let i=0;i<256;i++)hist[i]+=columns[right*256+i]-columns[left*256+i];}
+      }
+      if(y<h-1){changeRow(y-r,-1);changeRow(y+r+1,1);}
+      if(y%4===0)progress(y/h);
+    }
+    progress(1);return new PixelBuffer(w,h,out);
+  }
+  globalThis.ImageModel={histogram,metrics,kernel,smooth,lut,transform,clahe,clippedValue};
+}
+installImageModel();
+if(typeof module!=='undefined')module.exports={...ImageModel,installImageModel};
+</script><script>const SampleImages={
+  items:[['low','Малый контраст','Яркости сжаты в диапазон 95–150. Сравните растяжение и эквализацию.'],['color','Цветовые полосы','Малоконтрастная цветная сцена. Сравните RGB и HSV: независимые каналы могут изменить оттенок.'],['noise','Гауссов шум','Шум на плавных областях и тонких деталях. Сравните бокс-фильтр и Гаусс.'],['impulse','Импульсный шум','Соль и перец: линейное сглаживание ослабляет выбросы, но размывает детали.'],['uneven','Неравномерный свет','Локальные детали на тёмном и светлом фоне. Сравните глобальную эквализацию и CLAHE.'],['edges','Границы и детали','Контрастные полосы и объекты касаются границ. Сравните Reflect и Clamp.'],['clean','Чистый эталон','Исходная сцена без шума для оценки потери деталей при сглаживании.']],
+  make(kind,width=640,height=400){
+    const data=new Uint8ClampedArray(width*height*4);let seed=2302;
+    const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return (seed+.5)/4294967296;};
+    const clamp=x=>Math.max(0,Math.min(255,Math.round(x)));
+    for(let y=0;y<height;y++)for(let x=0;x<width;x++){
+      const u=x/width,v=y/height,p=(y*width+x)*4;
+      let value=45+145*u+18*Math.sin(v*10),r,g,b;
+      if(u>.13&&u<.42&&v>.22&&v<.77)value=90+70*v;
+      if((u-.68)**2+(v-.47)**2<.14**2)value=220;
+      if(v>.83&&v<.88&&u>.08&&u<.92)value=(Math.floor(u*65)%2)?235:20;
+      if(u>.48&&u<.51&&v>.1&&v<.9)value=30;
+      r=value;g=value;b=value;
+      if(kind==='low')r=g=b=95+value*55/255;
+      if(kind==='color'){const band=Math.floor(u*6),palette=[[180,85,90],[150,145,65],[70,165,115],[75,130,170],[120,85,165],[170,95,140]];[r,g,b]=palette[Math.min(5,band)].map(c=>75+c*(.25+.35*v));if((u-.65)**2+(v-.42)**2<.08**2){r+=25;g+=12;b+=5;}}
+      if(kind==='noise'){const noise=18*Math.sqrt(-2*Math.log(random()))*Math.cos(2*Math.PI*random());r+=noise;g+=noise;b+=noise;}
+      if(kind==='impulse'){const q=random();if(q<.045)r=g=b=0;else if(q>.955)r=g=b=255;}
+      if(kind==='uneven'){let detail=(Math.floor(u*22)+Math.floor(v*14))%2?12:-12;if((u-.5)**2+(v-.5)**2<.035)detail+=22;r=g=b=30+170*u+detail+8*Math.sin(v*20);}
+      if(kind==='edges'){r=g=b=30+190*(Math.floor(u*24)%2);if(u<.04||v<.04)r=g=b=255;if(v>.7)r=g=b=20+200*(Math.floor(u*80)%2);}
+      data[p]=clamp(r);data[p+1]=clamp(g);data[p+2]=clamp(b);data[p+3]=255;
+    }
+    return new PixelBuffer(width,height,data);
+  }
+};
+if(typeof module!=='undefined')module.exports=SampleImages;
+</script><script>function imageWorker() {
+  self.onmessage=({data:job})=>{
+    try {
+      const image=new PixelBuffer(job.width,job.height,new Uint8ClampedArray(job.buffer));
+      let previous=-1;
+      const progress=value=>{const percent=Math.floor(value*20);if(percent!==previous){previous=percent;self.postMessage({type:'progress',id:job.id,value});}};
+      let result;
+      if(job.operation==='smooth')result=ImageModel.smooth(image,job.options,progress);
+      else if(job.operation==='clahe')result=ImageModel.clahe(image,job.options,progress);
+      else if(job.operation==='transform')result=ImageModel.transform(image,job.method,job.tables,progress);
+      else if(job.operation==='histogram'){self.postMessage({type:'result',id:job.id,histogram:ImageModel.histogram(image)});return;}
+      else throw new Error('Неизвестная операция');
+      const cropped=result.crop(job.coreStart,job.coreRows);
+      self.postMessage({type:'result',id:job.id,buffer:cropped.data.buffer},[cropped.data.buffer]);
+    }catch(error){self.postMessage({type:'error',id:job.id,error:error.message});}
+  };
+}
+</script><script>class ProcessingEngine {
+  constructor(onProgress){this.onProgress=onProgress;this.generation=0;this.workers=[];this.pending=new Map();this.sequence=0;}
+  cancel(){this.generation++;for(const worker of this.workers)worker.terminate();this.workers=[];for(const item of this.pending.values())item.reject(new Error('Обработка остановлена'));this.pending.clear();if(this.url)URL.revokeObjectURL(this.url);this.url=null;}
+  startPool(count){this.cancel();this.url=URL.createObjectURL(new Blob([`(${installPixelBuffer.toString()})();(${installImageModel.toString()})();(${imageWorker.toString()})();`],{type:'text/javascript'}));
+    try{for(let i=0;i<count;i++){const worker=new Worker(this.url);worker.onmessage=({data})=>{const task=this.pending.get(data.id);if(!task)return;if(data.type==='progress'){task.progress(data.value);return;}this.pending.delete(data.id);if(data.type==='error')task.reject(new Error(data.error));else task.resolve(data);};worker.onerror=event=>{event.preventDefault();for(const item of this.pending.values())item.reject(new Error(event.message||'Ошибка рабочего потока'));this.pending.clear();};this.workers.push(worker);}}catch(e){this.cancel();throw e;}}
+  job(worker,job,progress){return new Promise((resolve,reject)=>{job.id=++this.sequence;this.pending.set(job.id,{resolve,reject,progress});try{worker.postMessage(job,[job.buffer]);}catch(e){this.pending.delete(job.id);reject(e);}});}
+  async stage(image,operation,options,extra,base,span,label){
+    const n=this.workers.length,output=operation==='histogram'?null:new Uint8ClampedArray(image.data.length),fractions=new Float64Array(n);
+    const radius=operation==='smooth'?options.radius:operation==='clahe'?options.claheRadius:0;
+    const parts=await Promise.all(this.workers.map((worker,i)=>{
+      const start=Math.floor(i*image.height/n),end=Math.floor((i+1)*image.height/n),from=Math.max(0,start-radius),to=Math.min(image.height,end+radius);
+      const bytes=image.data.slice(from*image.width*4,to*image.width*4);
+      const update=value=>{fractions[i]=value;this.onProgress(base+span*fractions.reduce((a,b)=>a+b,0)/n,label);};
+      return this.job(worker,{operation,options,width:image.width,height:to-from,buffer:bytes.buffer,coreStart:start-from,coreRows:end-start,...extra},update).then(result=>{if(output)output.set(new Uint8ClampedArray(result.buffer),start*image.width*4);update(1);return result;});
+    }));
+    if(output)return new PixelBuffer(image.width,image.height,output);
+    const h=Array.from({length:5},()=>new Uint32Array(256));for(const part of parts)for(let c=0;c<5;c++)for(let k=0;k<256;k++)h[c][k]+=part.histogram[c][k];return h;
+  }
+  async run(source,options){
+    const count=Math.min(options.threads,source.height,8);this.startPool(count);const generation=this.generation,started=performance.now();
+    try {
+      const before=await this.stage(source,'histogram',options,{},0,.08,'Гистограмма исходного изображения');
+      let result=source;
+      if(options.filter!=='none')result=await this.stage(source,'smooth',options,{},.08,.42,'Сглаживание: два одномерных прохода');
+      if(options.contrast==='clahe')result=await this.stage(result,'clahe',options,{},.5,.42,'CLAHE: локальные гистограммы');
+      else if(options.contrast!=='none'){
+        const h=options.filter==='none'?before:await this.stage(result,'histogram',options,{},.5,.08,'Гистограмма после сглаживания');
+        const tables=options.contrast==='rgb'?[0,1,2].map(c=>ImageModel.lut(h[c],'equalize')):[ImageModel.lut(h[3],options.contrast==='linear'?'linear':'equalize')];
+        result=await this.stage(result,'transform',options,{tables,method:options.contrast==='rgb'?'rgb':'value'},.58,.34,'Преобразование контраста');
+      }
+      const after=await this.stage(result,'histogram',options,{},.92,.08,'Гистограмма результата');
+      return {image:result,before,after,elapsed:performance.now()-started,threads:count,options:{...options}};
+    }finally{if(generation===this.generation)this.cancel();}
+  }
+}
+</script><script>const ImageView={
+  $(id){return document.getElementById(id);},
+  number(n,d=2){return n.toLocaleString('ru-RU',{maximumFractionDigits:d});},
+  show(id,image){const canvas=this.$(id);canvas.width=image.width;canvas.height=image.height;canvas.getContext('2d').putImageData(new ImageData(image.data,image.width,image.height),0,0);},
+  controls(){const filter=this.$('filter').value;this.$('radius').disabled=filter==='none';this.$('sigma').disabled=filter!=='gaussian';this.$('clahe-settings').hidden=this.$('contrast').value!=='clahe';for(const [id,target] of [['radius','radius-value'],['clahe-radius','clahe-radius-value']]){const r=Number(this.$(id).value);this.$(target).textContent=`${r} · окно ${2*r+1} × ${2*r+1}`;}this.$('sigma-value').textContent=this.number(Number(this.$('sigma').value));this.$('clip-value').textContent=this.number(Number(this.$('clip').value));},
+  progress(value,label){this.$('progress').value=value;this.$('progress-text').textContent=`${Math.round(value*100)}% · ${label}`;},
+  busy(value){this.$('apply').disabled=value;this.$('cancel').disabled=!value;this.$('save').disabled=value||!this.result;},
+  plots(){if(!this.result)return;const channel=this.$('channel').value,channels=channel==='rgb'?[0,1,2]:[Number(channel)],log=this.$('log').checked;let max=1;
+    for(const group of [this.result.before,this.result.after])for(const c of channels)for(const n of group[c])max=Math.max(max,log?Math.log1p(n):n);
+    for(const [id,group] of [['hist-before',this.result.before],['hist-after',this.result.after]]){
+      const canvas=this.$(id),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height,left=50,top=10,bottom=h-29,plotw=w-left-25,ploth=bottom-top;ctx.clearRect(0,0,w,h);ctx.font='15px system-ui';ctx.fillStyle='#6a8377';ctx.strokeStyle='#d9e7dc';ctx.lineWidth=1;
+      for(let j=0;j<3;j++){const y=top+j*ploth/2;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-10,y);ctx.stroke();const actual=log?Math.expm1(max*(1-j/2)):max*(1-j/2);ctx.fillText(actual>=1000?this.number(actual/1000,1)+'k':this.number(actual,0),0,y+4);}
+      for(const x of [0,64,128,192,255])ctx.fillText(String(x),left+x/255*plotw-8,h-8);
+      for(const c of channels){ctx.beginPath();ctx.moveTo(left,bottom);for(let i=0;i<256;i++){const value=log?Math.log1p(group[c][i]):group[c][i];ctx.lineTo(left+(i+.5)*plotw/256,bottom-value/max*ploth);}ctx.lineTo(left+plotw,bottom);ctx.closePath();ctx.fillStyle=channels.length===1?'#368d7860':['#d7656555','#50a87555','#5a83bc55'][c];ctx.fill();ctx.strokeStyle=channels.length===1?'#24765f':['#bf5151','#388f5c','#4774a9'][c];ctx.stroke();}
+    }
+  },
+  finish(result){this.result=result;this.show('after',result.image);this.plots();const a=ImageModel.metrics(result.before[4]),b=ImageModel.metrics(result.after[4]);for(const key of ['mean','std','entropy'])this.$(key).textContent=`${this.number(a[key])} → ${this.number(b[key])}`;this.$('elapsed').textContent=`${this.number(result.elapsed)} мс`;this.progress(1,`готово · потоков: ${result.threads}`);this.busy(false);},
+  clear(){this.result=null;this.$('save').disabled=true;for(const id of ['mean','std','entropy','elapsed'])this.$(id).textContent='—';for(const id of ['hist-before','hist-after']){const c=this.$(id);c.getContext('2d').clearRect(0,0,c.width,c.height);}this.$('progress').value=0;this.$('progress-text').textContent='Готово к обработке';}
+};
+</script><script>(() => {
+  const view=ImageView,$=id=>view.$(id);let source=null,sourceName='image',version=0,loadVersion=0;
+  const engine=new ProcessingEngine((value,label)=>view.progress(value,label));
+  const options=()=>({filter:$('filter').value,radius:Number($('radius').value),sigma:Number($('sigma').value),edge:$('edge').value,contrast:$('contrast').value,claheRadius:Number($('clahe-radius').value),clipLimit:Number($('clip').value),threads:Number($('threads').value)});
+  function cancel(){version++;engine.cancel();view.busy(false);$('progress-text').textContent='Обработка остановлена';}
+  function setSource(image,name,description=''){cancel();source=image;sourceName=name;$('source-name').textContent=name;$('source-size').textContent=`${image.width} × ${image.height} px`;$('sample-description').textContent=description;$('notice').textContent='';view.clear();view.show('before',image);view.show('after',image);$('result-label').textContent='Исходное изображение';}
+  async function apply(){if(!source)return;const id=++version,settings=options();view.busy(true);$('notice').textContent='';
+    try{const result=await engine.run(source,settings);if(id!==version)return;view.finish(result);const filter={none:'',gaussian:'Гаусс',box:'Бокс-фильтр'}[settings.filter],contrast={none:'',linear:'Линейное растяжение V',rgb:'Эквализация RGB',hsv:'Эквализация HSV',clahe:'CLAHE'}[settings.contrast];$('result-label').textContent=[filter,contrast].filter(Boolean).join(' + ')||'Без изменений';}
+    catch(error){if(id===version){view.busy(false);$('notice').textContent=error.message;$('progress-text').textContent='Не удалось завершить обработку';}}
+  }
+  function sample(kind){loadVersion++;const item=SampleImages.items.find(x=>x[0]===kind);setSource(SampleImages.make(kind),item[1],item[2]);for(const b of $('samples').children)b.classList.toggle('active',b.dataset.kind===kind);apply();}
+  for(const item of SampleImages.items){const button=document.createElement('button'),canvas=document.createElement('canvas'),image=SampleImages.make(item[0],160,100);canvas.width=160;canvas.height=100;canvas.getContext('2d').putImageData(new ImageData(image.data,160,100),0,0);button.append(canvas,document.createTextNode(item[1]));button.dataset.kind=item[0];button.onclick=()=>sample(item[0]);$('samples').append(button);}
+  $('open').onclick=()=>$('file').click();
+  $('file').onchange=async event=>{const file=event.target.files[0];if(!file)return;const id=++loadVersion;cancel();$('notice').textContent='Открываю изображение…';let url;
+    try{
+      if(file.size>160*1024*1024)throw new Error('Выберите файл размером до 160 МБ');
+      url=URL.createObjectURL(file);const image=new Image();image.src=url;await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Браузер не смог открыть изображение. Используйте PNG, JPEG, BMP или WebP.'));});
+      if(id!==loadVersion)return;const w=image.naturalWidth,h=image.naturalHeight;
+      if(!w||!h||w*h>16000000||w>16000||h>16000)throw new Error('Поддерживаются изображения до 16 миллионов пикселей и 16 000 пикселей по стороне');
+      const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(image,0,0);const data=ctx.getImageData(0,0,w,h);setSource(new PixelBuffer(w,h,data.data),file.name,'Загруженное изображение. Обработка выполняется в исходном разрешении.');for(const b of $('samples').children)b.classList.remove('active');await apply();
+    }catch(error){if(id===loadVersion)$('notice').textContent=error.message;}
+    finally{if(url)URL.revokeObjectURL(url);}
+  };
+  $('apply').onclick=apply;$('cancel').onclick=cancel;
+  $('reset').onclick=()=>{cancel();$('filter').value='none';$('contrast').value='linear';$('radius').value=2;$('sigma').value=1.4;$('edge').value='reflect';$('clahe-radius').value=16;$('clip').value=2;view.controls();if(source)apply();};
+  for(const id of ['filter','contrast','radius','sigma','edge','clahe-radius','clip','threads'])$(id).oninput=()=>{view.controls();if(view.result)$('notice').textContent='Параметры изменены. Нажмите «Применить», чтобы обновить результат.';};
+  $('channel').onchange=()=>view.plots();$('log').onchange=()=>view.plots();
+  $('save').onclick=()=>{if(!view.result)return;$('after').toBlob(blob=>{if(!blob){$('notice').textContent='Не удалось сохранить PNG';return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=sourceName.replace(/\.[^.]+$/,'')+'-processed.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);},'image/png');};
+  window.addEventListener('beforeunload',()=>engine.cancel());view.controls();sample('low');
+})();
+</script></body></html>
