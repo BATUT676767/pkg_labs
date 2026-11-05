@@ -1,0 +1,186 @@
+{
+  "date": "2026-11-05T13:54:00.690Z",
+  "environment": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/150.0.0.0 YaBrowser/26.8.0.0 Safari/537.36",
+  "seed": 20261105,
+  "count": 500000,
+  "rows": [
+    {
+      "density": 1,
+      "depth": 4,
+      "buildMs": 37.30000019073486,
+      "medianMs": 0.0625,
+      "p95Ms": 0.08749997615814209,
+      "maxMs": 0.10000002384185791,
+      "candidates": 5094.897916666667,
+      "visible": 312.7708333333333,
+      "nodes": 20.45
+    },
+    {
+      "density": 1,
+      "depth": 6,
+      "buildMs": 57.90000009536743,
+      "medianMs": 0.025000035762786865,
+      "p95Ms": 0.050000011920928955,
+      "maxMs": 0.07499998807907104,
+      "candidates": 2072.5520833333335,
+      "visible": 312.7708333333333,
+      "nodes": 37.916666666666664
+    },
+    {
+      "density": 1,
+      "depth": 8,
+      "buildMs": 70.90000009536743,
+      "medianMs": 0.037499964237213135,
+      "p95Ms": 0.050000011920928955,
+      "maxMs": 0.07499998807907104,
+      "candidates": 1785.59375,
+      "visible": 312.7708333333333,
+      "nodes": 62.65833333333333
+    },
+    {
+      "density": 1,
+      "depth": 10,
+      "buildMs": 69.7000002861023,
+      "medianMs": 0.025000035762786865,
+      "p95Ms": 0.03750002384185791,
+      "maxMs": 0.08749997615814209,
+      "candidates": 1785.59375,
+      "visible": 312.7708333333333,
+      "nodes": 62.65833333333333
+    },
+    {
+      "density": 4,
+      "depth": 4,
+      "buildMs": 22.799999713897705,
+      "medianMs": 0.27500003576278687,
+      "p95Ms": 0.8125,
+      "maxMs": 0.9625000357627869,
+      "candidates": 18014.1875,
+      "visible": 1254.2895833333334,
+      "nodes": 20.45
+    },
+    {
+      "density": 4,
+      "depth": 6,
+      "buildMs": 57.09999990463257,
+      "medianMs": 0.125,
+      "p95Ms": 0.4125000238418579,
+      "maxMs": 0.762499988079071,
+      "candidates": 5873.172916666666,
+      "visible": 1254.2895833333334,
+      "nodes": 37.916666666666664
+    },
+    {
+      "density": 4,
+      "depth": 8,
+      "buildMs": 81,
+      "medianMs": 0.10000002384185791,
+      "p95Ms": 0.11250001192092896,
+      "maxMs": 0.3125,
+      "candidates": 4317.90625,
+      "visible": 1254.2895833333334,
+      "nodes": 121.53333333333333
+    },
+    {
+      "density": 4,
+      "depth": 10,
+      "buildMs": 77.59999990463257,
+      "medianMs": 0.10000002384185791,
+      "p95Ms": 0.13750004768371582,
+      "maxMs": 0.15000003576278687,
+      "candidates": 4317.90625,
+      "visible": 1254.2895833333334,
+      "nodes": 121.53333333333333
+    },
+    {
+      "density": 16,
+      "depth": 4,
+      "buildMs": 23.59999990463257,
+      "medianMs": 1.0625,
+      "p95Ms": 1.537500023841858,
+      "maxMs": 1.6875,
+      "candidates": 64347.9,
+      "visible": 5032.61875,
+      "nodes": 20.45
+    },
+    {
+      "density": 16,
+      "depth": 6,
+      "buildMs": 31,
+      "medianMs": 0.44999998807907104,
+      "p95Ms": 0.5625,
+      "maxMs": 0.6499999761581421,
+      "candidates": 18511.404166666667,
+      "visible": 5032.61875,
+      "nodes": 37.916666666666664
+    },
+    {
+      "density": 16,
+      "depth": 8,
+      "buildMs": 61.5,
+      "medianMs": 0.375,
+      "p95Ms": 0.42500001192092896,
+      "maxMs": 0.4500000476837158,
+      "candidates": 12262.066666666668,
+      "visible": 5032.61875,
+      "nodes": 121.53333333333333
+    },
+    {
+      "density": 16,
+      "depth": 10,
+      "buildMs": 86.19999980926514,
+      "medianMs": 0.36250001192092896,
+      "p95Ms": 0.40000003576278687,
+      "maxMs": 0.4249999523162842,
+      "candidates": 11741.554166666667,
+      "visible": 5032.61875,
+      "nodes": 301.25
+    }
+  ],
+  "operations": [
+    {
+      "algorithm": "cohen",
+      "filter": false,
+      "mul": 29,
+      "div": 29,
+      "tested": 500000,
+      "accepted": 314,
+      "rejected": 499686,
+      "preRejected": 0,
+      "ms": 35.59999990463257
+    },
+    {
+      "algorithm": "cohen",
+      "filter": true,
+      "mul": 29,
+      "div": 29,
+      "tested": 314,
+      "accepted": 314,
+      "rejected": 0,
+      "preRejected": 499686,
+      "ms": 21.800000190734863
+    },
+    {
+      "algorithm": "liang",
+      "filter": false,
+      "mul": 1256,
+      "div": 779895,
+      "tested": 500000,
+      "accepted": 314,
+      "rejected": 499686,
+      "preRejected": 0,
+      "ms": 35.5
+    },
+    {
+      "algorithm": "liang",
+      "filter": true,
+      "mul": 1256,
+      "div": 1256,
+      "tested": 314,
+      "accepted": 314,
+      "rejected": 0,
+      "preRejected": 499686,
+      "ms": 8.699999809265137
+    }
+  ]
+}

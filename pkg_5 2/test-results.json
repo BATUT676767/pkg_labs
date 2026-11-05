@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "total": 46826,
+  "cases": [
+    {
+      "name": "boundary",
+      "status": "passed"
+    },
+    {
+      "name": "corner-point",
+      "status": "passed"
+    },
+    {
+      "name": "outside-point",
+      "status": "passed"
+    },
+    {
+      "name": "parallel-outside",
+      "status": "passed"
+    },
+    {
+      "name": "corner-tangent",
+      "status": "passed"
+    },
+    {
+      "name": "vertical",
+      "status": "passed"
+    },
+    {
+      "name": "split",
+      "area": 60,
+      "components": 2,
+      "holes": 0,
+      "status": "passed"
+    },
+    {
+      "name": "hole",
+      "area": 96,
+      "components": 1,
+      "holes": 1,
+      "status": "passed"
+    },
+    {
+      "name": "cross",
+      "area": 66,
+      "components": 2,
+      "holes": 0,
+      "status": "passed"
+    },
+    {
+      "name": "touch",
+      "area": 64,
+      "components": 1,
+      "holes": 0,
+      "status": "passed"
+    },
+    {
+      "name": "concave",
+      "area": 74.66666666666667,
+      "components": 1,
+      "holes": 0,
+      "status": "passed"
+    },
+    {
+      "name": "identical",
+      "area": 100,
+      "status": "passed"
+    },
+    {
+      "name": "contained",
+      "area": 36,
+      "status": "passed"
+    },
+    {
+      "name": "shared-edge",
+      "area": 0,
+      "status": "passed"
+    },
+    {
+      "name": "touch-vertex",
+      "area": 0,
+      "status": "passed"
+    },
+    {
+      "name": "disjoint",
+      "area": 0,
+      "status": "passed"
+    },
+    {
+      "name": "clip-hole",
+      "area": 84,
+      "status": "passed"
+    },
+    {
+      "name": "reverse-orientation",
+      "area": 100,
+      "status": "passed"
+    },
+    {
+      "name": "epsilon-coincidence",
+      "area": 99.9999999,
+      "status": "passed"
+    },
+    {
+      "name": "two-islands",
+      "area": 18,
+      "status": "passed"
+    },
+    {
+      "name": "duplicate-evenodd",
+      "area": 0,
+      "status": "passed"
+    },
+    {
+      "name": "hole-touching-window",
+      "area": 88,
+      "status": "passed"
+    }
+  ],
+  "date": "2026-11-05T13:53:46.831Z"
+}

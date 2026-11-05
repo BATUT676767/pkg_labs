@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "browser": "26.8.0.0",
+  "checks": [
+    "line algorithms",
+    "TXT import",
+    "vertex dragging",
+    "polygon presets",
+    "JSON export",
+    "500000 dynamic segments 300 frames",
+    "12 benchmark combinations",
+    "mobile",
+    "standalone Worker",
+    "benchmark cancellation"
+  ],
+  "date": "2026-11-05T13:54:04.343Z"
+}
